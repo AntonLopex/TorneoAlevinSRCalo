@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Torneo SR Calo</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Torneo de Verano</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/main.js"></script>
 </head>
 <body>
   <header>
-    <nav>
+    <div class="logo">Torneo de Verano</div>
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav class="nav-menu">
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="equipos.html">Equipos</a></li>
@@ -18,22 +25,18 @@
       </ul>
     </nav>
   </header>
-
-  <main class="inicio">
-    <div class="bienvenida">
-      <h1>¡Bienvenidos al Torneo SR Calo!</h1>
-      <p>Aquí iría el texto que tú escribirás ✍️</p>
+  <main class="hero">
+    <div class="overlay-text">
+      <h1>Bienvenidos al Torneo de Verano</h1>
+      <p>Aquí va el texto que tú desees incluir, Antón.</p>
     </div>
   </main>
-
   <footer>
-    <div class="social">
-      <a href="https://www.instagram.com/torneosrcalo/" target="_blank"><img src="img/instagram.png" alt="Instagram" /></a>
-      <a href="https://facebook.com" target="_blank"><img src="img/facebook.png" alt="Facebook" /></a>
-      <a href="https://whatsapp.com" target="_blank"><img src="img/whatsapp.png" alt="WhatsApp" /></a>
+    <div class="redes">
+      <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="img/whatsapp.png" alt="WhatsApp"></a>
     </div>
   </footer>
-
-  <script src="js/main.js"></script>
 </body>
 </html>
