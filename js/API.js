@@ -1,15 +1,30 @@
-https://docs.google.com/spreadsheets/d/1bWqNmdqAiUJReQCB4PkP43_BHSBbFvDP/edit?gid=1042050523#gid=1042050523
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSdxnuyx7os2-KOzHq8YjIY2HxfFuPhCTZ11MLNRMfImX7rj2tYG71uave1_cfO3g/pub?gid=778009378&single=true&output=csv';
 
-const sheetID = 'TU_ID_DE_HOJA'
-const gid = '0' // cambia por el número de hoja que necesites
-const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json&gid=${gid}`
+fetch(CSV_URL)
+  .then(response => response.text())
+  .then(csv => {
+    const rows = csv.trim().split('\n').map(row => row.split(','));
+    const table = document.getElementById('tabla-resultados');
 
-fetch(url)
-  .then(res => res.text())
-  .then(data => {
-    const json = JSON.parse(data.substring(47).slice(0, -2))
-    const rows = json.table.rows
-    rows.forEach(row => {
-      console.log(row.c.map(cell => cell?.v))
-    })
+    const headerRow = document.createElement('tr');
+    rows[0].forEach(header => {
+      const th = document.createElement('th');
+      th.textContent = header;
+      headerRow.appendChild(th);
+    });
+    table.appendChild(headerRow);
+
+    for (let i = 1; i < rows.length; i++) {
+      const row = document.createElement('tr');
+      rows[i].forEach(cell => {
+        const td = document.createElement('td');
+        td.textContent = cell;
+        row.appendChild(td);
+      });
+      table.appendChild(row);
+    }
   })
+  .catch(err => {
+    document.body.innerHTML += "<p>Error al cargar los datos.</p>";
+    console.error("Error leyendo el CSV:", err);
+  });
