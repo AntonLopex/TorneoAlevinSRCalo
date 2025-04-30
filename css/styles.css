@@ -55,7 +55,7 @@ header {
 }
 
 .hero {
-  background: url('img/instalaciones.jpg') center/cover no-repeat;
+  background: url('img/instalaciones.jpeg') center/cover no-repeat;
   height: 100vh;
   display: flex;
   align-items: center;
