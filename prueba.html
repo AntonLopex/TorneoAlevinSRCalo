@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultados Torneo</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center
+    }
+    th {
+      background-color: #007BFF;
+      color: white
+    }
+  </style>
+</head>
+<body>
+  <h1>Resultados del Torneo</h1>
+  <table id="tabla-resultados"></table>
+
+  <script>
+    const url ='https://docs.google.com/spreadsheets/d/1bWqNmdqAiUJReQCB4PkP43_BHSBbFvDP/gviz/tq?tqx=out:json'
+
+  
+    fetch(url)
+      .then(res => res.text())
+      .then(data => {
+        console.log(data)
+        const json = JSON.parse(data.substring(47).slice(0, -2))
+        const rows = json.table.rows
+        console.log('Datos:', rows)
+  
+        
+      })
+      .catch(err => console.error('Error al cargar datos:', err))
+  </script>
+  
+</body>
+</html>
