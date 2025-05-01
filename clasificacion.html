@@ -6,8 +6,31 @@
   <title>Cruces</title>
   <link rel="stylesheet" href="css/styles.css" />
   <script src="js/main.js" defer></script>
-  <script src="js/API.js" defer></script>
+  <script src="js/getClasificacion.js" defer></script>
 </head>
+<style>
+    #loading {
+    text-align: center;
+    padding: 30px;
+    font-size: 1.5em;
+    color : #333;
+  }
+    #spinner-img {
+      margin: 10px auto;
+      border: 5px solid ;
+      border-top: 5px solid ;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: girar 1s linear infinite;
+      color: #fff;
+    }
+  
+    @keyframes girar {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 <body>
     <header>
         <div class="logo">Torneo de Verano</div>
@@ -29,6 +52,10 @@
 
   <main class="contenedor">
     <h1>Clasificación</h1>
+    <div id="loading">
+        <img src="/img/equipos/Calo.jpeg" id="spinner-img" alt="Cargando...">
+        <p>Cargando clasificación...</p>
+    </div>
     <table id="tabla-clasificacion" border="2px"></table>
   </main>
 
