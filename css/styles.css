@@ -1,7 +1,385 @@
+/* Establecer fondo fijo y que ocupe toda la altura */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fondo difuminado con imagen fija */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  color: #fafafa;
+  position: relative; /* Necesario para los pseudo-elementos */
+  min-height: 100%; /* Asegura que el fondo cubra todo el contenido */
+  background: url('../img/instalaciones.jpg') center/cover no-repeat fixed;
+  background-size: cover;
+  background-attachment: fixed; /* Hace que la imagen de fondo no se mueva al hacer scroll */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+    
+  /* Estilos generales */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #0033a0;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0033a0;
+    padding: 10px 20px;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .nav-menu ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 24px;
+    width: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 2px;
+  }
+  
+  .overlay-text {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  footer {
+    background-color: #0033a0;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  footer .redes {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 10px;
+  }
+  
+  footer .redes a img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+  }
+  
+  footer .redes a img:hover {
+    transform: scale(1.2);
+  }
+  
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: #0033a0;
+      border: 2px solid white;
+      border-radius: 10px;
+      width: 200px;
+      padding: 10px;
+    }
+    .nav-menu.active {
+      display: block;
+    }
+    .nav-menu ul {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  
+  .equipos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 5rem;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    box-sizing: border-box;
+    transform: translateZ(0);
+  }
+  
+  .card {
+    perspective: 1000px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+  }
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ajusta la imagen sin perder su proporción */
+    max-width: 100%; /* Evita que la imagen se desborde */
+    max-height: 100%; /* Evita que la imagen se desborde */
+  }
+  
+  
+  
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+    transform-origin: center center; /* ← clave para que gire sobre sí misma */
+  }
+  
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .card-front,
+  .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-front img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .card-back {
+    transform: rotateY(180deg);
+    text-align: center;
+  }
+  
+  .grupo {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+  
+  .grupo h1 {
+    margin: 60px 0 20px;
+    font-size: 2rem;
+    text-align: center;
+    color: #fafafa;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: sans-serif;
+    background-color: #f8f9fa;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+  }
+  
+  /* Contenedor con scroll horizontal si se necesita */
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 10px 0;
+  }
+  
+  /* Estilos generales */
+  th, td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  th {
+    background-color: #007bff;
+    color: white;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f1f1f1;
+  }
+  
+  tr:hover {
+    background-color: #d0e3ff;
+  }
+  
+  /* Responsive para móviles */
+  @media (max-width: 600px) {
+    th, td {
+      padding: 6px;
+      font-size: 13px;
+    }
+  
+    table {
+      font-size: 13px;
+    }
+  }
+  
+  
+  #contenedor-tarjetas {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Tarjeta individual */
+  .tarjeta {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  /* Sección de los dos equipos */
+  .equipos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+  
+  /* Cada equipo ocupa el 48% como máximo */
+  .equipo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 48%;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+  
+  /* Nombre del equipo */
+  .equipo strong {
+    font-size: 1em;
+    text-align: center;
+    word-break: break-word;
+  }
+  
+  /* Escudos adaptables */
+  .equipo img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+  
+  /* Resultado grande y centrado */
+  .resultado {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  /* Información adicional */
+  .info-extra {
+    text-align: center;
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  /* Adaptación para pantallas pequeñas */
+  @media (max-width: 500px) {
+    #contenedor-tarjetas {
+      width: 95%;
+    }
+  
+    .tarjeta {
+      padding: 10px;
+    }
+  
+    .equipo strong {
+      font-size: 0.9em;
+    }
+  
+    .equipo img {
+      width: 45px;
+      height: 45px;
+    }
+  
+    .resultado {
+      font-size: 1.5em;
+    }
+  
+    .info-extra {
+      font-size: 0.8em;
+    }
+  }
+   /* Opacidad ajustable */
+}
+
+
+/* Estilo para los elementos de contenido */
+header, footer, .equipos-grid, .card, .grupo, .table-container {
+  position: relative;
+  z-index: 1; /* Asegura que el contenido se muestra por encima del fondo difuminado */
+}
+
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
   color: #0033a0;
 }
 
@@ -52,17 +430,6 @@ header {
   width: 100%;
   background-color: white;
   border-radius: 2px;
-}
-
-.hero {
-  background: url('img/instalaciones.jpeg') center/cover no-repeat;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  color: white;
-  text-align: center;
 }
 
 .overlay-text {
@@ -202,7 +569,7 @@ footer .redes a img:hover {
   color: #0033a0;
 }
 
- table {
+table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
@@ -210,24 +577,24 @@ footer .redes a img:hover {
   background-color: #f8f9fa;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
   overflow-x: auto;
-} 
+}
 
 /* Contenedor con scroll horizontal si se necesita */
 .table-container {
   width: 100%;
   overflow-x: auto;
   margin: 10px 0;
-} 
+}
 
 /* Estilos generales */
- th, td {
+th, td {
   border: 1px solid #dee2e6;
   padding: 8px;
   text-align: center;
   font-size: 14px;
-} 
+}
 
- th {
+th {
   background-color: #007bff;
   color: white;
   text-transform: uppercase;
@@ -240,10 +607,10 @@ tr:nth-child(even) {
 
 tr:hover {
   background-color: #d0e3ff;
-} 
+}
 
 /* Responsive para móviles */
- @media (max-width: 600px) {
+@media (max-width: 600px) {
   th, td {
     padding: 6px;
     font-size: 13px;
@@ -252,7 +619,7 @@ tr:hover {
   table {
     font-size: 13px;
   }
-} 
+}
 
 
 #contenedor-tarjetas {
