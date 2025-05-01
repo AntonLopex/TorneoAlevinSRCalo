@@ -93,10 +93,18 @@ function obtenerDatosBruto(CSV_URL){
 // obtenerDatosBruto(CSV_URL_RESULTADOS)
 
 const escudos = {
-  "Club A": "https://via.placeholder.com/60?text=A",
-  "Club B": "https://via.placeholder.com/60?text=B",
-  "Club C": "https://via.placeholder.com/60?text=C",
-  "Club D": "https://via.placeholder.com/60?text=D"
+  "C.D. Lugo": "/img/equipos/Lugo.png",
+  "S.R. Calo": "/img/equipos/Calo.jpeg",
+  "Familaçao": "/img/equipos/Familiaçao.png",
+  "Santa Mariña": "/img/equipos/Santa mariña.png",
+  "Ural C.F.": "/img/equipos/Ural.jpg",
+  "Pabellón Ourense": "/img/equipos/Pabellon.png",
+  "Racing Ferrol": "/img/equipos/Ferrol.png",
+  "Val Miñor": "/img/equipos/Val miñor.jpg",
+  "Sp. Portugal": "/img/equipos/Sp Academy.jpg",
+  "Victoria C.F.": "/img/equipos/Victoria.png",
+  "G.D. Chaves": "/img/equipos/chaves.png",
+  "Atl. Arteixo": "/img/equipos/Arteixo.jpg",
 };
 
 function obtenerResultadosPartidos(url) {
@@ -136,9 +144,9 @@ function obtenerResultadosPartidos(url) {
         const partido2 = columnas[5]?.trim();
         const resultado2 = columnas[8]?.trim();
 
-        const partes2 = partido1.split(" vs ");
-        const local2 = partes[0]?.trim();
-        const visitante2 = partes[1]?.trim();
+        const partes2 = partido2.split(" vs ");
+        const local2 = partes2[0]?.trim();
+        const visitante2 = partes2[1]?.trim();
 
         if (partido2 && resultado2) {
           resultados.push({
@@ -173,11 +181,11 @@ function renderizarTarjetas(resultados) {
       <div class="equipos">
         <div class="equipo">
           <strong>${res.local}</strong>
-          <img src="img/equipos/${res.local}.jpeg" alt="Escudo ${res.local}">
+          <img src="${escudos[res.local] || '/img/equipos/default.png'}" alt="Escudo ${res.local}">
         </div>
         <div class="equipo">
           <strong>${res.visitante}</strong>
-          <img src="img/equipos/${res.visitante}.jpeg" alt="Escudo ${res.visitante}">
+          <img src="${escudos[res.visitante] || '/img/equipos/default.png'}" alt="Escudo ${res.visitante}">
         </div>
       </div>
 
@@ -195,6 +203,4 @@ function renderizarTarjetas(resultados) {
 
 obtenerResultadosPartidos(CSV_URL_RESULTADOS);
 
-
-obtenerResultadosPartidos(CSV_URL_RESULTADOS)
 obtenerClasificacion(CSV_URL_CLASIFICACION)
