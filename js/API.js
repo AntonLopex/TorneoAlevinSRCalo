@@ -117,12 +117,18 @@ function obtenerResultadosPartidos(url) {
         const partido1 = columnas[1]?.trim();
         const resultado1 = columnas[4]?.trim();
 
+        const partes = partido1.split(" vs ");
+        const local = partes[0]?.trim();
+        const visitante = partes[1]?.trim();
+
         if (partido1 && resultado1) {
           resultados.push({
             hora,
             grupo: 1,
             campo: 'Campo 1',
             partido: partido1,
+            local: local,
+            visitante: visitante,
             resultado: resultado1
           });
         }
@@ -130,17 +136,24 @@ function obtenerResultadosPartidos(url) {
         const partido2 = columnas[5]?.trim();
         const resultado2 = columnas[8]?.trim();
 
+        const partes2 = partido1.split(" vs ");
+        const local2 = partes[0]?.trim();
+        const visitante2 = partes[1]?.trim();
+
         if (partido2 && resultado2) {
           resultados.push({
             hora,
             grupo: 2,
             campo: 'Campo 2',
             partido: partido2,
+            local: local2,
+            visitante: visitante2,
             resultado: resultado2
           });
         }
       }
 
+      console.log(resultados);
       renderizarTarjetas(resultados);
     })
     .catch(err => {
@@ -152,7 +165,6 @@ function obtenerResultadosPartidos(url) {
 function renderizarTarjetas(resultados) {
   const contenedor = document.getElementById("contenedor-tarjetas");
   resultados.forEach(res => {
-    const [equipo1, equipo2] = res.partido.split(" - ").map(e => e.trim());
 
     const tarjeta = document.createElement("div");
     tarjeta.className = "tarjeta";
@@ -160,12 +172,12 @@ function renderizarTarjetas(resultados) {
     tarjeta.innerHTML = `
       <div class="equipos">
         <div class="equipo">
-          <strong>${equipo2}</strong>
-          <img src="${escudos[equipo2] || 'https://via.placeholder.com/60'}" alt="Escudo ${equipo2}">
+          <strong>${res.local}</strong>
+          <img src="img/equipos/${res.local}.jpeg" alt="Escudo ${res.local}">
         </div>
         <div class="equipo">
-          <strong>${equipo1}</strong>
-          <img src="${escudos[equipo1] || 'https://via.placeholder.com/60'}" alt="Escudo ${equipo1}">
+          <strong>${res.visitante}</strong>
+          <img src="img/equipos/${res.visitante}.jpeg" alt="Escudo ${res.visitante}">
         </div>
       </div>
 
@@ -180,6 +192,8 @@ function renderizarTarjetas(resultados) {
     contenedor.appendChild(tarjeta);
   });
 }
+
+obtenerResultadosPartidos(CSV_URL_RESULTADOS);
 
 
 obtenerResultadosPartidos(CSV_URL_RESULTADOS)
