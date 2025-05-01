@@ -199,6 +199,8 @@ function renderizarTarjetas(resultados) {
     `;
     contenedor.appendChild(tarjeta);
   });
+  document.getElementById("loading").style.display = "none";
+  document.getElementById("contenedor-resultados").style.display = "block";
 }
 
 obtenerResultadosPartidos(CSV_URL_RESULTADOS);
