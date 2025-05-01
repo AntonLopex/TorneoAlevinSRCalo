@@ -20,7 +20,7 @@ const CSV_URL_RESULTADOS =
 const escudos = {
   "C.D. Lugo": "img/equipos/lugo.png",
   "S.R. Calo": "img/equipos/calo.jpeg",
-  "Familaçao": "img/equipos/familiaçao.png",
+  "F.C. Famalicão": "img/equipos/familiaçao.png",
   "Santa Mariña": "img/equipos/santamarina.png",
   "Ural C.F.": "img/equipos/ural.jpg",
   "Pabellón Ourense": "img/equipos/pabellon.png",

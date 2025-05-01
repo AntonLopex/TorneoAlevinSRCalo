@@ -94,19 +94,21 @@ body {
   
   footer .redes {
     display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+    justify-content: right;
+    gap: 1rem;
     margin-top: 10px;
+    margin-right: 5%;
   }
-  
+    
   footer .redes a img {
-    width: 30px;
-    height: 30px;
-    transition: transform 0.3s;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    transition: transform 0.5s;
   }
   
   footer .redes a img:hover {
-    transform: scale(1.2);
+    transform: scale(1.5);
   }
   
   @media (max-width: 768px) {
@@ -568,7 +570,7 @@ footer .redes a img:hover {
   margin: 60px 0 20px;
   font-size: 2rem;
   text-align: center;
-  color: #0033a0;
+  color: #fafafa;
 }
 
 table {
