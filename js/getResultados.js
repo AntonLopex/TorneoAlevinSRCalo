@@ -18,18 +18,18 @@ const CSV_URL_RESULTADOS =
 // }
 
 const escudos = {
-  "C.D. Lugo": "/img/equipos/Lugo.png",
-  "S.R. Calo": "/img/equipos/Calo.jpeg",
-  "Familaçao": "/img/equipos/Familiaçao.png",
-  "Santa Mariña": "/img/equipos/Santa mariña.png",
-  "Ural C.F.": "/img/equipos/Ural.jpg",
-  "Pabellón Ourense": "/img/equipos/Pabellon.png",
-  "Racing Ferrol": "/img/equipos/Ferrol.png",
-  "Val Miñor": "/img/equipos/Val miñor.jpg",
-  "Sp. Portugal": "/img/equipos/Sp Academy.jpg",
-  "Victoria C.F.": "/img/equipos/Victoria.png",
-  "G.D. Chaves": "/img/equipos/chaves.png",
-  "Atl. Arteixo": "/img/equipos/Arteixo.jpg",
+  "C.D. Lugo": "../img/equipos/Lugo.png",
+  "S.R. Calo": "../img/equipos/Calo.jpeg",
+  "Familaçao": "../img/equipos/Familiaçao.png",
+  "Santa Mariña": "../img/equipos/Santa mariña.png",
+  "Ural C.F.": "../img/equipos/Ural.jpg",
+  "Pabellón Ourense": "../img/equipos/Pabellon.png",
+  "Racing Ferrol": "../img/equipos/Ferrol.png",
+  "Val Miñor": "../img/equipos/Val miñor.jpg",
+  "Sp. Portugal": "../img/equipos/Sp Academy.jpg",
+  "Victoria C.F.": "../img/equipos/Victoria.png",
+  "G.D. Chaves": "../img/equipos/chaves.png",
+  "Atl. Arteixo": "../img/equipos/Arteixo.jpg",
 };
 
 function obtenerResultadosPartidos(url) {
