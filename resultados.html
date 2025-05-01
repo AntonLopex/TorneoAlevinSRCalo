@@ -33,7 +33,7 @@
 </style>
 <body>
     <header>
-        <div class="logo"></div>
+      <img src="img/logo.png" alt="Logo">
         <button class="menu-toggle" aria-label="Abrir menú">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -59,6 +59,25 @@
     <div id="contenedor-tarjetas"></div>
   </main>
 
+
+  <button id="btn-top" title="Volver arriba">↑</button>
+  <script>
+    const btnTop = document.getElementById('btn-top')
+  
+    window.onscroll = () => {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        btnTop.style.display = 'block'
+      } else {
+        btnTop.style.display = 'none'
+      }
+    }
+  
+    btnTop.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  </script>
+  
+
   <footer>
     <div class="redes">
       <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
@@ -67,6 +86,5 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
 </body>
 </html>
