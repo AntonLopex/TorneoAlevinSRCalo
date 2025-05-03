@@ -168,13 +168,11 @@ body {
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 0.8s ease;
-    transform-origin: center center; /* ← clave para que gire sobre sí misma */
   }
   
-  .card:hover .card-inner {
+   .card:hover .card-inner {
     transform: rotateY(180deg);
   }
-  
   .card-front,
   .card-back {
     position: absolute;
@@ -442,136 +440,7 @@ header {
   border-radius: 10px;
 }
 
-footer {
-  background-color: #0033a0;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-}
 
-footer .redes {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 10px;
-}
-
-footer .redes a img {
-  width: 30px;
-  height: 30px;
-  transition: transform 0.3s;
-}
-
-footer .redes a img:hover {
-  transform: scale(1.2);
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
-  .nav-menu {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background-color: #0033a0;
-    border: 2px solid white;
-    border-radius: 10px;
-    width: 200px;
-    padding: 10px;
-  }
-  .nav-menu.active {
-    display: block;
-  }
-  .nav-menu ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
-.equipos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 5rem;
-  padding: 40px;
-  max-width: 1200px;
-  margin: 40px auto;
-  box-sizing: border-box;
-  transform: translateZ(0);
-}
-
-.card {
-  perspective: 1000px;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  position: relative;
-}
-.card img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Ajusta la imagen sin perder su proporción */
-  max-width: 100%; /* Evita que la imagen se desborde */
-  max-height: 100%; /* Evita que la imagen se desborde */
-}
-
-
-
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.8s ease;
-  transform-origin: center center; /* ← clave para que gire sobre sí misma */
-}
-
-.card:hover .card-inner {
-  transform: rotateY(180deg);
-}
-
-.card-front,
-.card-back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border-radius: 10px;
-  overflow: hidden;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.card-front img {
-  max-width: 100%;
-  height: auto;
-}
-
-.card-back {
-  transform: rotateY(180deg);
-  text-align: center;
-}
-
-.grupo {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 40px;
-  box-sizing: border-box;
-}
-
-.grupo h1 {
-  margin: 60px 0 20px;
-  font-size: 2rem;
-  text-align: center;
-  color: #fafafa;
-}
 
 table {
   width: 100%;
