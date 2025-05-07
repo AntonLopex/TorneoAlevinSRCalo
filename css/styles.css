@@ -168,9 +168,9 @@ body {
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 0.8s ease;
+   
   }
-  
-   .card:hover .card-inner {
+    .card:hover .card-inner {
     transform: rotateY(180deg);
   }
   .card-front,
@@ -567,52 +567,78 @@ tr:hover {
   color: #555;
 }
 
-/* Adaptación para pantallas pequeñas */
-@media (max-width: 500px) {
-  #contenedor-tarjetas {
-    width: 95%;
-  }
+/*Estilos para las cards del inicio*/
 
-  .tarjeta {
-    padding: 10px;
-  }
-
-  .equipo strong {
-    font-size: 0.9em;
-  }
-
-  .equipo img {
-    width: 45px;
-    height: 45px;
-  }
-
-  .resultado {
-    font-size: 1.5em;
-  }
-
-  .info-extra {
-    font-size: 0.8em;
-  }
+.grid-info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
 }
 
-
-#btn-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 10px 14px;
-  font-size: 20px;
+.cardInfo {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  display: none;
-  z-index: 1000;
-  transition: background-color 0.3s
+  transition: box-shadow 0.3s ease;
 }
 
-#btn-top:hover {
-  background-color: #0056b3
+.cardInfo:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.cardInfo h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 15px;
+  background-color: #f0f0f0;
+  font-size: 1.2rem;
+}
+.arrow {
+  font-size: 24px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+/* Oculta el contenido inicialmente */
+.card-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  padding: 0;
+}
+
+.cardInfo.expanded .card-content {
+  max-height: 1000px; /* Valor grande para permitir expansión */
+  padding: 15px;
+}
+
+.cardInfo img, .cardInfo table, .cardInfo p, .cardInfo ul, .cardInfo a, .cardInfo div {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 100%;
+}
+
+
+
+
+/* BOTÓN ENCUESTA */
+.btn {
+  display: inline-block;
+  background-color: #007acc;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: #005aa7;
 }

@@ -1,55 +1,201 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Torneo de Verano</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="js/main.js" defer></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Torneo de Verano</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/main.js" defer></script>
+  </head>
 
-<body>
-  <header>
-    <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
-    <button class="menu-toggle" aria-label="Abrir menú">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="equipos.html">Equipos</a></li>
-        <li><a href="cruces.html">Cruces</a></li>
-        <li><a href="resultados.html">Resultados</a></li>
-        <li><a href="clasificacion.html">Clasificación</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main><p>hola</p></main>
-  <button id="btn-top" title="Volver arriba">↑</button>
-  <script>
-    const btnTop = document.getElementById('btn-top')
-  
-    window.onscroll = () => {
-      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        btnTop.style.display = 'block'
+  <body>
+    <header>
+      <a href="index.html"><img src="img/logo.png" alt="Logo" /></a>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="equipos.html">Equipos</a></li>
+          <li><a href="cruces.html">Cruces</a></li>
+          <li><a href="resultados.html">Resultados</a></li>
+          <li><a href="clasificacion.html">Clasificación</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="grid-info-cards">
+      <section id="organizacion" class="cardInfo">
+        <h2>
+          Organización das instalacións
+          <span class="arrow">▼</span>
+        </h2>
+        <div class="card-content">
+          <img
+            src="img/organizacion-aerea.jpg"
+            alt="Imaxe aérea da organización"
+          />
+        </div>
+      </section>
+
+      <section id="parking" class="cardInfo">
+        <h2>
+          Parkings habilitados
+          <span class="arrow">▼</span>
+        </h2>
+        <div class="card-content">
+          <img src="img/parkings.jpg" alt="Imaxe dos parkings" />
+          <h3>Información dos parkings</h3>
+          <img src="img/infoParking.jpg" alt="Info1" />
+        </div>
+      </section>
+
+      <section id="cantina" class="cardInfo">
+        <h2>
+          Menú da cantina
+          <span class="arrow">▼</span>
+        </h2>
+        <div class="card-content">
+          <img src="img/menu-cantina.jpg" alt="Menú da cantina" />
+          <h3>Horarios das comidas</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Hora</th>
+                <th>Grupo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>12:30</td>
+                <td>Grupo A</td>
+              </tr>
+              <tr>
+                <td>13:00</td>
+                <td>Grupo B</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="comida" class="cardInfo">
+        <h2>
+          Onde comer
+          <span class="arrow">▼</span>
+        </h2>
+        <div class="comedor">
+          <h3>Bayuca</h3>
+          <p>
+            Comedor cuberto con menú adaptado para nenos. Espazo amplo e cómodo.
+          </p>
+          <a
+            href="https://www.google.com/maps?q=bayuca+rebordelo"
+            target="_blank"
+            >Ver ubicación</a
+          >
+        </div>
+        <div class="comedor">
+          <h3>San Martiño</h3>
+          <p>
+            Espazo con servizo de comidas para participantes e familiares, preto
+            do campo.
+          </p>
+          <a
+            href="https://www.google.com/maps?q=san+marti%C3%B1o+rebordelo"
+            target="_blank"
+            >Ver ubicación</a
+          >
+        </div>
+      </section>
+
+      <section id="normas" class="cardInfo">
+        <h2>
+          Normas do torneo
+          <span class="arrow">▼</span>
+        </h2>
+        <ul>
+          <li>Fase de grupos a unha volta.</li>
+          <li>
+            Os dous primeiros clasificados de cada grupo acceden ás
+            eliminatorias.
+          </li>
+          <li>Empates resoltos por penaltis.</li>
+          <li>Tempo dos partidos: 2 partes de 12 minutos.</li>
+        </ul>
+      </section>
+
+      <section id="enquisa" class="cardInfo">
+        <h2>
+          Axúdanos a mellorar!
+          <span class="arrow">▼</span>
+        </h2>
+        <p>Deixa a túa opinión sobre o torneo.</p>
+        <a class="btn" href="https://forms.gle/tu-enquisa" target="_blank"
+          >Ir á enquisa</a
+        >
+      </section>
+    </main>
+
+    <button id="btn-top" title="Volver arriba">↑</button>
+    <script>
+      const btnTop = document.getElementById("btn-top");
+      window.onscroll = () => {
+        if (
+          document.body.scrollTop > 100 ||
+          document.documentElement.scrollTop > 100
+        ) {
+          btnTop.style.display = "block";
+        } else {
+          btnTop.style.display = "none";
+        }
+      };
+      btnTop.onclick = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+    </script>
+    <script>
+document.querySelectorAll('.cardInfo h2').forEach(h2 => {
+  h2.addEventListener('click', (event) => {
+    const cardInfo = event.currentTarget.closest('.cardInfo'); // Encontrar la cardInfo correspondiente
+
+    // Toggle para añadir/quitar la clase 'expanded'
+    cardInfo.classList.toggle('expanded');
+    
+    // Encontrar el ícono de la flecha dentro de la cardInfo
+    const arrow = cardInfo.querySelector('.arrow');
+    if (arrow) {
+      // Cambiar el contenido de la flecha según el estado de la tarjeta
+      if (cardInfo.classList.contains('expanded')) {
+        arrow.textContent = '▲';  // Flecha hacia arriba
       } else {
-        btnTop.style.display = 'none'
+        arrow.textContent = '▼';  // Flecha hacia abajo
       }
     }
-  
-    btnTop.onclick = () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-  </script>
-  <footer>
-    <div class="redes">
-      <a href="https://www.instagram.com/futbolcalosr/"><img src="img/instagram.png" alt="Instagram"></a>
-      <a href="https://www.instagram.com/torneosrcalo/"><img src="img/logo.png" alt="torneosrcalo"></a>
-      <a href="https://www.facebook.com/p/F%C3%BAtbol-Calo-SR-100057430399598/?locale=es_ES"><img src="img/facebook.png" alt="Facebook"></a>
-      <a href="https://whatsapp.com/channel/0029VarRrbVLI8YSNcQ9te24"><img src="img/whatsapp.png" alt="WhatsApp"></a>
-    </div>
-  </footer>
-</body>
+  });
+});
+
+    </script>
+
+    <footer>
+      <div class="redes">
+        <a href="https://www.instagram.com/futbolcalosr/"
+          ><img src="img/instagram.png" alt="Instagram"
+        /></a>
+        <a href="https://www.instagram.com/torneosrcalo/"
+          ><img src="img/logo.png" alt="torneosrcalo"
+        /></a>
+        <a
+          href="https://www.facebook.com/p/F%C3%BAtbol-Calo-SR-100057430399598/?locale=es_ES"
+          ><img src="img/facebook.png" alt="Facebook"
+        /></a>
+        <a href="https://whatsapp.com/channel/0029VarRrbVLI8YSNcQ9te24"
+          ><img src="img/whatsapp.png" alt="WhatsApp"
+        /></a>
+      </div>
+    </footer>
+  </body>
 </html>
