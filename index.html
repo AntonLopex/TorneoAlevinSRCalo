@@ -138,11 +138,12 @@
           >Ir á enquisa</a
         >
       </section>
+      <button id="btn-top" title="Volver arriba">↑</button>
     </main>
 
-    <button id="btn-top" title="Volver arriba">↑</button>
     <script>
-      const btnTop = document.getElementById("btn-top");
+function boton(){
+  const btnTop = document.getElementById("btn-top");
       window.onscroll = () => {
         if (
           document.body.scrollTop > 100 ||
@@ -156,9 +157,9 @@
       btnTop.onclick = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       };
-    </script>
-    <script>
-document.querySelectorAll('.cardInfo h2').forEach(h2 => {
+}
+function cardsMovements(){
+  document.querySelectorAll('.cardInfo h2').forEach(h2 => {
   h2.addEventListener('click', (event) => {
     const cardInfo = event.currentTarget.closest('.cardInfo'); // Encontrar la cardInfo correspondiente
 
@@ -177,7 +178,9 @@ document.querySelectorAll('.cardInfo h2').forEach(h2 => {
     }
   });
 });
-
+}
+boton()
+cardsMovements()
     </script>
 
     <footer>

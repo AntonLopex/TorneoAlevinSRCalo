@@ -642,3 +642,25 @@ tr:hover {
 .btn:hover {
   background-color: #005aa7;
 }
+
+/*BOTON PARA IR ARRIBA*/
+#btn-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 14px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  display: none;
+  z-index: 1000;
+  transition: background-color 0.3s
+}
+
+#btn-top:hover {
+  background-color: #0056b3
+}
