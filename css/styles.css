@@ -45,7 +45,7 @@ body {
     width: auto;
     margin-right: 10px;
   }
-    
+
   
   .nav-menu ul {
     display: flex;
@@ -73,17 +73,14 @@ body {
   }
   
   .menu-toggle .bar {
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    overflow: hidden;
     height: 3px;
     width: 100%;
     background-color: white;
     border-radius: 2px;
   }
   
-  .overlay-text {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 10px;
-  }
   
   footer {
     background-color: #0033a0;
@@ -566,6 +563,11 @@ tr:hover {
   font-size: 0.9em;
   color: #555;
 }
+/*Estilos pagina de inicio*/
+h1, p{
+  text-align: center;
+  color: white;
+}
 
 /*Estilos para las cards del inicio*/
 
@@ -610,21 +612,52 @@ tr:hover {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s ease;
-  padding: 0;
+  padding: 0 15px 0 15px; /* mantiene margen horizontal incluso oculto */
+  text-align: center;
+  box-sizing: border-box; /* Asegura que padding se respete sin desbordar */
+}
+.card-content a{
+  display: inline-block;        /* permite añadir padding y efectos */
+  color: #0056b3;               /* azul fuerte, puedes cambiar por el color del torneo */
+  text-decoration: none;        /* quitamos el subrayado por defecto */
+  font-weight: bold;            /* para destacar */
+  padding: 8px 12px;
+  border: 2px solid #0056b3;
+  border-radius: 8px;
+  background-color: white;
+  transition: all 0.3s ease;    /* suaviza los cambios */
+}
+
+.card-content a:hover{
+  background-color: #0056b3;
+  color: white;
+  text-decoration: none;
+  transform: scale(1.05); 
 }
 
 .cardInfo.expanded .card-content {
-  max-height: 1000px; /* Valor grande para permitir expansión */
-  padding: 15px;
+  max-height: 1000px;
+  padding: 15px; /* margen en todos lados cuando está visible */
+}
+.cardInfo img{
+  border-radius: 10px;
 }
 
 .cardInfo img, .cardInfo table, .cardInfo p, .cardInfo ul, .cardInfo a, .cardInfo div {
-  margin-top: 10px;
-  width: 100%;
+  color: #0056b3;
+  margin: 10px auto;
+  width: auto;
   max-width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+.cardInfo small{
+  color: red;
 }
 
-
+#normas .card-content ul{
+  text-align: left;
+}
 
 
 /* BOTÓN ENCUESTA */
