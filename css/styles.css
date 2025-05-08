@@ -198,6 +198,24 @@ body {
     transform: rotateY(180deg);
     text-align: center;
   }
+  .card-back a{
+    display: inline-block;        /* permite añadir padding y efectos */
+    color: #0056b3;               /* azul fuerte, puedes cambiar por el color del torneo */
+    text-decoration: none;        /* quitamos el subrayado por defecto */
+    font-weight: bold;            /* para destacar */
+    padding: 8px 12px;
+    border: 2px solid #0056b3;
+    border-radius: 8px;
+    background-color: white;
+    transition: all 0.3s ease;    /* suaviza los cambios */
+  }
+  
+  .card-back a:hover{
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none;
+    transform: scale(1.05); 
+  }
   
   .grupo {
     max-width: 1200px;
@@ -564,7 +582,7 @@ tr:hover {
   color: #555;
 }
 /*Estilos pagina de inicio*/
-h1, p{
+h1{
   text-align: center;
   color: white;
 }
@@ -597,7 +615,7 @@ h1, p{
   align-items: center;
   margin: 0;
   padding: 15px;
-  background-color: #f0f0f0;
+  background-color: white;
   font-size: 1.2rem;
 }
 .arrow {
