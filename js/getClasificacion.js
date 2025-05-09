@@ -1,40 +1,105 @@
 const CSV_URL_CLASIFICACION =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTU-cKi7PXQIvUCei0LnpprMcwMBKvjXa955mYqFZygYzYuh08zlKP8JCmSero4jw/pub?gid=2104840114&single=true&output=csv";
 
-function obtenerClasificacion(CSV_URL) {
-    document.getElementById("loading").style.display = "block";
-  fetch(CSV_URL)
-    .then((response) => response.text())
+const escudos = {
+  "C.D.Lugo": "img/equipos/lugo.png",
+  "S.R. Calo": "img/equipos/calo.jpeg",
+  "Familaçao": "img/equipos/familiaçao.png",
+  "F.C. Famalicão": "img/equipos/familiaçao.png",
+  "Ural C.F.": "img/equipos/ural.jpg",
+  "Santa Mariña": "img/equipos/santamarina.png",
+  "Pabellón Ourense": "img/equipos/pabellon.png",
+  "Racing Ferrol": "img/equipos/ferrol.png",
+  "Val Miñor": "img/equipos/valminor.jpg",
+  "SP. Portugal Acad.": "img/equipos/spacademy.jpg",
+  "Victoria C.F.": "img/equipos/victoria.png",
+  "G.D. Chaves": "img/equipos/chaves.png",
+  "Atl. Arteixo": "img/equipos/arteixo.jpg",
+};
+
+function obtenerClasificacionCSV(url) {
+  fetch(url)
+    .then((res) => res.text())
     .then((csv) => {
-      const rows = csv
-        .trim()
-        .split("\n")
-        .map((row) => row.split(","));
-      const table = document.getElementById("tabla-clasificacion");
+      const lineas = csv.trim().split(/\r?\n/);
+      const grupos = {};
+      let grupoActual = null;
 
-      const headerRow = document.createElement("tr");
-      rows[0].forEach((header) => {
-        const th = document.createElement("th");
-        th.textContent = header;
-        headerRow.appendChild(th);
-      });
-      table.appendChild(headerRow);
+      for (const linea of lineas) {
+        const columnas = linea.split(",").map((col) => col.trim());
 
-      for (let i = 1; i < rows.length; i++) {
-        const row = document.createElement("tr");
-        rows[i].forEach((cell) => {
-          const td = document.createElement("td");
-          td.textContent = cell;
-          row.appendChild(td);
-        });
-        table.appendChild(row);
+        if (/CLASIFICACIÓN GRUPO/i.test(columnas[0])) {
+          grupoActual = columnas[0];
+          grupos[grupoActual] = { headers: [], equipos: [] };
+          continue;
+        }
+
+        if (!grupoActual || columnas.every((c) => c === "")) continue;
+
+        if (columnas[0].toLowerCase() === "equipo") {
+          grupos[grupoActual].headers = columnas.filter((c) => c !== "");
+        } else {
+          grupos[grupoActual].equipos.push(columnas.filter((c) => c !== ""));
+        }
       }
+
+      renderizarClasificacion(grupos);
     })
     .catch((err) => {
-      document.body.innerHTML += "<p>Error al cargar los datos.</p>";
-      console.error("Error leyendo el CSV:", err);
+      console.error("Error leyendo CSV:", err);
+      document.body.innerHTML += "<p>Error cargando la clasificación.</p>";
     });
+}
+
+function renderizarClasificacion(grupos) {
+  const contenedor = document.getElementById("clasificacion");
+  if (!contenedor) {
+    console.warn("No se encontró el contenedor #clasificacion");
+    return;
+  }
+
+  Object.entries(grupos).forEach(([nombreGrupo, datosGrupo]) => {
+    const grupoDiv = document.createElement("div");
+    grupoDiv.className = "grupo-clasificacion";
+
+    grupoDiv.innerHTML += `<h2>${nombreGrupo}</h2>`;
+
+    const tabla = document.createElement("table");
+    tabla.className = "tabla-clasificacion";
+
+    // Cabecera
+    const thead = document.createElement("thead");
+    const trHead = document.createElement("tr");
+    datosGrupo.headers.forEach((h) => {
+      const th = document.createElement("th");
+      th.textContent = h;
+      trHead.appendChild(th);
+    });
+    thead.appendChild(trHead);
+    tabla.appendChild(thead);
+
+    // Cuerpo
+    const tbody = document.createElement("tbody");
+    datosGrupo.equipos.forEach((fila) => {
+      const tr = document.createElement("tr");
+      fila.forEach((dato, idx) => {
+        const td = document.createElement("td");
+        if (idx === 0) {
+          td.innerHTML = `<img src="${escudos[dato] || "img/equipos/default.png"}" alt="Escudo ${dato}" class="escudo-clasificacion"> ${dato}`;
+        } else {
+          td.textContent = dato;
+        }
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+
+    tabla.appendChild(tbody);
+    grupoDiv.appendChild(tabla);
+    contenedor.appendChild(grupoDiv);
+  });
   document.getElementById("loading").style.display = "none";
 }
 
-obtenerClasificacion(CSV_URL_CLASIFICACION);
+// ✅ Llamada para ejecutar
+obtenerClasificacionCSV(CSV_URL_CLASIFICACION);
