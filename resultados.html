@@ -57,10 +57,17 @@
       <p>Cargando resultados...</p>
     </div>
     <div id="contenedor-tarjetas"></div>
+    <button id="btn-top" title="Volver arriba">↑</button>
   </main>
+  <footer>
+    <div class="redes">
+      <a href="https://www.instagram.com/futbolcalosr/"><img src="img/instagram.png" alt="Instagram"></a>
+      <a href="https://www.instagram.com/torneosrcalo/"><img src="img/logo.png" alt="torneosrcalo"></a>
+      <a href="https://www.facebook.com/p/F%C3%BAtbol-Calo-SR-100057430399598/?locale=es_ES"><img src="img/facebook.png" alt="Facebook"></a>
+      <a href="https://whatsapp.com/channel/0029VarRrbVLI8YSNcQ9te24"><img src="img/whatsapp.png" alt="WhatsApp"></a>
+    </div>
+  </footer>
 
-
-  <button id="btn-top" title="Volver arriba">↑</button>
   <script>
     const btnTop = document.getElementById('btn-top')
   
@@ -75,17 +82,21 @@
     btnTop.onclick = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
-  </script>
-  
+    const footer = document.querySelector('footer');
 
-  <footer>
-    <div class="redes">
-      <a href="https://www.instagram.com/futbolcalosr/"><img src="img/instagram.png" alt="Instagram"></a>
-      <a href="https://www.instagram.com/torneosrcalo/"><img src="img/logo.png" alt="torneosrcalo"></a>
-      <a href="https://www.facebook.com/p/F%C3%BAtbol-Calo-SR-100057430399598/?locale=es_ES"><img src="img/facebook.png" alt="Facebook"></a>
-      <a href="https://whatsapp.com/channel/0029VarRrbVLI8YSNcQ9te24"><img src="img/whatsapp.png" alt="WhatsApp"></a>
-    </div>
-  </footer>
+      window.addEventListener('scroll', () => {
+        const footerRect = footer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const offset = 30; // Distancia mínima del botón respecto al footer
+
+        if (footerRect.top < windowHeight) {
+          const overlap = windowHeight - footerRect.top + offset;
+          btnTop.style.bottom = `${overlap}px`;
+        } else {
+          btnTop.style.bottom = '20px';
+        }
+      });
+  </script>
 
 </body>
 </html>
