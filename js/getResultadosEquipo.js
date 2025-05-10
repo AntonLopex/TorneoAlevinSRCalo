@@ -95,7 +95,7 @@ function obtenerResultadosDeEquipo(equipoNombre) {
   
 
 function renderizarTarjetas(resultados) {
-  const contenedor = document.getElementById("resultados-equipo");
+  const contenedor = document.getElementById("contenedor-tarjetas");
   resultados.forEach((res) => {
     const tarjeta = document.createElement("div");
     tarjeta.className = "tarjeta";
