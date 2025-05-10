@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resultados</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/main.js" defer></script>
+  <script src="js/getResultadosEquipo.js" defer></script>
+</head>
+<style>
+  #loading {
+  text-align: center;
+  padding: 30px;
+  font-size: 1.5em;
+  color : #333;
+}
+  #spinner-img {
+    margin: 10px auto;
+    border: 5px solid ;
+    border-top: 5px solid ;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: girar 1s linear infinite;
+    color: #fff;
+  }
+
+  @keyframes girar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+<body>
+    <header>
+      <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+        <button class="menu-toggle" aria-label="Abrir menú">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="equipos.html">Equipos</a></li>
+            <li><a href="cruces.html">Cruces</a></li>
+            <li><a href="resultados.html">Resultados</a></li>
+            <li><a href="clasificacion.html">Clasificación</a></li>
+          </ul>
+        </nav>
+      </header>
+
+  <main class="contenedor">  
+      
+    <div id="loading">
+      <img src="img/equipos/calo.jpeg" id="spinner-img" alt="Cargando...">
+      <p>Cargando resultados...</p>
+    </div>
+    <div id="resultados-equipo"></div>
+    <button id="btn-top" title="Volver arriba">↑</button>
+  </main>
+  <footer>
+    <div class="redes">
+      <a href="https://www.instagram.com/futbolcalosr/"><img src="img/instagram.png" alt="Instagram"></a>
+      <a href="https://www.instagram.com/torneosrcalo/"><img src="img/logo.png" alt="torneosrcalo"></a>
+      <a href="https://www.facebook.com/p/F%C3%BAtbol-Calo-SR-100057430399598/?locale=es_ES"><img src="img/facebook.png" alt="Facebook"></a>
+      <a href="https://whatsapp.com/channel/0029VarRrbVLI8YSNcQ9te24"><img src="img/whatsapp.png" alt="WhatsApp"></a>
+    </div>
+  </footer>
+
+  <script>
+    const btnTop = document.getElementById('btn-top')
+  
+    window.onscroll = () => {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        btnTop.style.display = 'block'
+      } else {
+        btnTop.style.display = 'none'
+      }
+    }
+  
+    btnTop.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+    const footer = document.querySelector('footer');
+
+      window.addEventListener('scroll', () => {
+        const footerRect = footer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const offset = 30; // Distancia mínima del botón respecto al footer
+
+        if (footerRect.top < windowHeight) {
+          const overlap = windowHeight - footerRect.top + offset;
+          btnTop.style.bottom = `${overlap}px`;
+        } else {
+          btnTop.style.bottom = '20px';
+        }
+      });
+  </script>
+
+</body>
+</html>
