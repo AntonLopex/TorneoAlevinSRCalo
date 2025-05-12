@@ -37,6 +37,71 @@
       vertical-align: middle;
       margin-right: 5px;
     }
+    /* Contenedor de cada grupo */
+    .grupo-clasificacion {
+      margin: 2rem 0;
+    }
+
+    /* Tabla de clasificación */
+    .tabla-clasificacion {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: transparent;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      margin-top: 1rem;
+    }
+
+    /* Encabezado */
+    .tabla-clasificacion thead th {
+      background-color: rgba(0, 51, 160, 0.8);
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      border-bottom: 2px solid white;
+    }
+
+    /* Celdas */
+    .tabla-clasificacion td {
+      background-color: rgba(255, 255, 255, 0.05);
+      text-align: center;
+      padding: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+    }
+
+    /* Hover fila */
+    .tabla-clasificacion tbody tr:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Escudo */
+    .escudo-clasificacion {
+      height: 20px;
+      width: 20px;
+      object-fit: contain;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+
+    /* Puestos destacados */
+    .tabla-clasificacion tbody tr.pos-1,
+    .tabla-clasificacion tbody tr.pos-2,
+    .tabla-clasificacion tbody tr.pos-3,
+    .tabla-clasificacion tbody tr.pos-4  {
+      background: linear-gradient(to right, #FFD700aa, #FFFACDaa);
+      color: #000;
+      font-weight: bold;
+    }
+
+    .tabla-clasificacion tbody tr.pos-5,
+    .tabla-clasificacion tbody tr.pos-6 {
+      background: linear-gradient(to right, #C0C0C0aa, #E8E8E8aa);
+      color: #000;
+      font-weight: bold;
+    }
 
   </style>
   
@@ -66,8 +131,6 @@
         <p>Cargando clasificación...</p>
     </div>
     <table id="clasificacion" border="2px"></table>
-    <button id="btn-top" title="Volver arriba">↑</button>
-
   </main>
   <footer>
     <div class="redes">
@@ -77,35 +140,5 @@
       <a href="https://whatsapp.com/channel/0029VarRrbVLI8YSNcQ9te24"><img src="img/whatsapp.png" alt="WhatsApp"></a>
     </div>
   </footer>
-  <script>
-    const btnTop = document.getElementById('btn-top')
-  
-    window.onscroll = () => {
-      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        btnTop.style.display = 'block'
-      } else {
-        btnTop.style.display = 'none'
-      }
-    }
-  
-    btnTop.onclick = () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-    const footer = document.querySelector('footer');
-
-      window.addEventListener('scroll', () => {
-        const footerRect = footer.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const offset = 30; // Distancia mínima del botón respecto al footer
-
-        if (footerRect.top < windowHeight) {
-          const overlap = windowHeight - footerRect.top + offset;
-          btnTop.style.bottom = `${overlap}px`;
-        } else {
-          btnTop.style.bottom = '20px';
-        }
-      });    
-  </script>
-
 </body>
 </html>

@@ -80,8 +80,14 @@ function renderizarClasificacion(grupos) {
 
     // Cuerpo
     const tbody = document.createElement("tbody");
-    datosGrupo.equipos.forEach((fila) => {
+    datosGrupo.equipos.forEach((fila, index) => {
       const tr = document.createElement("tr");
+      if (index === 0) tr.classList.add("pos-1");
+      else if (index === 1) tr.classList.add("pos-2");
+      else if (index === 2) tr.classList.add("pos-3");
+      else if (index === 3) tr.classList.add("pos-4");
+      else if (index === 4) tr.classList.add("pos-5");
+      else if (index === 5) tr.classList.add("pos-6");
       fila.forEach((dato, idx) => {
         const td = document.createElement("td");
         if (idx === 0) {
