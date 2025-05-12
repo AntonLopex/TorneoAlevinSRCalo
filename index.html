@@ -213,48 +213,6 @@
       <button id="btn-top" title="Volver arriba">↑</button>
     </main>
 
-    <script>
-function boton(){
-  const btnTop = document.getElementById("btn-top");
-      window.onscroll = () => {
-        if (
-          document.body.scrollTop > 100 ||
-          document.documentElement.scrollTop > 100
-        ) {
-          btnTop.style.display = "block";
-        } else {
-          btnTop.style.display = "none";
-        }
-      };
-      btnTop.onclick = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      };
-}
-function cardsMovements(){
-  document.querySelectorAll('.cardInfo h2').forEach(h2 => {
-  h2.addEventListener('click', (event) => {
-    const cardInfo = event.currentTarget.closest('.cardInfo'); // Encontrar la cardInfo correspondiente
-
-    // Toggle para añadir/quitar la clase 'expanded'
-    cardInfo.classList.toggle('expanded');
-    
-    // Encontrar el ícono de la flecha dentro de la cardInfo
-    const arrow = cardInfo.querySelector('.arrow');
-    if (arrow) {
-      // Cambiar el contenido de la flecha según el estado de la tarjeta
-      if (cardInfo.classList.contains('expanded')) {
-        arrow.textContent = '▲';  // Flecha hacia arriba
-      } else {
-        arrow.textContent = '▼';  // Flecha hacia abajo
-      }
-    }
-  });
-});
-}
-boton()
-cardsMovements()
-    </script>
-
     <footer>
       <div class="redes">
         <a href="https://www.instagram.com/futbolcalosr/"
@@ -272,5 +230,60 @@ cardsMovements()
         /></a>
       </div>
     </footer>
+      <script>
+      function boton(){
+        const btnTop = document.getElementById("btn-top");
+            window.onscroll = () => {
+              if (
+                document.body.scrollTop > 100 ||
+                document.documentElement.scrollTop > 100
+              ) {
+                btnTop.style.display = "block";
+              } else {
+                btnTop.style.display = "none";
+              }
+            };
+            btnTop.onclick = () => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            };
+            const footer = document.querySelector('footer');
+
+          window.addEventListener('scroll', () => {
+            const footerRect = footer.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const offset = 30; // Distancia mínima del botón respecto al footer
+
+            if (footerRect.top < windowHeight) {
+              const overlap = windowHeight - footerRect.top + offset;
+              btnTop.style.bottom = `${overlap}px`;
+            } else {
+              btnTop.style.bottom = '20px';
+            }
+          });
+      }
+      function cardsMovements(){
+        document.querySelectorAll('.cardInfo h2').forEach(h2 => {
+        h2.addEventListener('click', (event) => {
+          const cardInfo = event.currentTarget.closest('.cardInfo'); // Encontrar la cardInfo correspondiente
+
+          // Toggle para añadir/quitar la clase 'expanded'
+          cardInfo.classList.toggle('expanded');
+          
+          // Encontrar el ícono de la flecha dentro de la cardInfo
+          const arrow = cardInfo.querySelector('.arrow');
+          if (arrow) {
+            // Cambiar el contenido de la flecha según el estado de la tarjeta
+            if (cardInfo.classList.contains('expanded')) {
+              arrow.textContent = '▲';  // Flecha hacia arriba
+            } else {
+              arrow.textContent = '▼';  // Flecha hacia abajo
+            }
+          }
+        });
+      });
+      }
+      boton()
+      cardsMovements()
+    </script>
   </body>
 </html>
