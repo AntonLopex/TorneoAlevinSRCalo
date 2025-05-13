@@ -160,6 +160,7 @@ body {
     position: relative;
     transform-style: preserve-3d;
     overflow: visible;
+    height: auto;
   }
   .card img {
     width: 100%;
