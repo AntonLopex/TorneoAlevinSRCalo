@@ -1,21 +1,5 @@
-
 const CSV_URL_RESULTADOS =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTU-cKi7PXQIvUCei0LnpprMcwMBKvjXa955mYqFZygYzYuh08zlKP8JCmSero4jw/pub?gid=597302420&single=true&output=csv";
-
-
-// function obtenerDatosBruto(CSV_URL) {
-//   fetch(CSV_URL)
-//     .then((response) => response.text())
-//     .then((csv) => {
-//       const pre = document.createElement("pre"); // crea un bloque de texto preformateado
-//       pre.textContent = csv;
-//       document.body.appendChild(pre);
-//     })
-//     .catch((err) => {
-//       document.body.innerHTML += "<p>Error al cargar los datos.</p>";
-//       console.error("Error leyendo el CSV:", err);
-//     });
-// }
 
 const escudos = {
   "C.D. Lugo": "img/equipos/lugo.png",
@@ -32,123 +16,132 @@ const escudos = {
   "Atl. Arteixo": "img/equipos/arteixo.png",
 };
 
+let datosPorLinea = [];
 
-function obtenerResultadosCuartosOro(url) {
-    fetch(url)
-      .then((res) => res.text())
-      .then((csv) => {
-        const lineas = csv.split(/\r?\n/).slice(29); // Omitir encabezados
-  
-        const resultados = [];
-  
-        for (const linea of lineas) {
-          if (!linea.trim()) continue;
-  
-          const columnas = linea.split(",");
-  
-          const hora = columnas[0]?.trim();
-  
-          const partido1 = columnas[1]?.trim();
-          const resultado1 = columnas[4]?.trim();
-  
-          const partes = partido1.split(" vs ");
-          const local = partes[0]?.trim();
-          const visitante = partes[1]?.trim();
-  
-          if (partido1 && resultado1) {
-            resultados.push({
-              hora,
-              campo: " 1",
-              partido: partido1,
-              local: local,
-              visitante: visitante,
-              resultado: resultado1,
-            });
-          }
-  
-          const partido2 = columnas[5]?.trim();
-          const resultado2 = columnas[8]?.trim();
-  
-          const partes2 = partido2.split(" vs ");
-          const local2 = partes2[0]?.trim();
-          const visitante2 = partes2[1]?.trim();
-  
-          if (partido2 && resultado2) {
-            resultados.push({
-              hora,
-              campo: " 2",
-              partido: partido2,
-              local: local2,
-              visitante: visitante2,
-              resultado: resultado2,
-            });
-          }
-        }
-  
-        console.log(resultados);
-        renderizarTarjetas(resultados);
-      })
-      .catch((err) => {
-        document.body.innerHTML += "<p>Error al cargar los datos.</p>";
-        console.error("Error leyendo el CSV:", err);
-      });
-  }
-  
-  function renderizarTarjetas(resultados) {
-    const contenedor = document.getElementById("contenedor-tarjetas");
-    resultados.forEach((res) => {
-      const tarjeta = document.createElement("div");
-      tarjeta.className = "tarjeta";
-  
-      tarjeta.innerHTML = `
-        <div class="equipos">
-          <div class="equipo">
-            <strong>${res.local}</strong>
-            <img src="${
-              escudos[res.local] || "/img/equipos/default.png"
-            }" alt="Escudo ${res.local}">
-          </div>
-          <div class="equipo">
-            <strong>${res.visitante}</strong>
-            <img src="${
-              escudos[res.visitante] || "/img/equipos/default.png"
-            }" alt="Escudo ${res.visitante}">
-          </div>
-        </div>
-  
-        <div class="resultado">${res.resultado}</div>
-  
-        <div class="info-extra">
-          <p>Hora: ${res.hora}</p>
-          <p>Campo: ${res.campo}</p>
-        </div>
-      `;
-      contenedor.appendChild(tarjeta);
-    });
+fetch(CSV_URL_RESULTADOS)
+  .then(res => res.text())
+  .then(csv => {
+    const lineas = csv.split(/\r?\n/).slice(29);
+    datosPorLinea = lineas.map(linea => linea.split(",").map(c => c.trim()));
+    cambiarFase(); // Iniciar con la fase por defecto
     document.getElementById("loading").style.display = "none";
+  })
+  .catch(err => {
+    document.body.innerHTML += "<p>Error al cargar los datos.</p>";
+    console.error("Error leyendo el CSV:", err);
+  });
+
+const lineaMapeo = {
+  oro: {
+    "Cuartos de final": [0, 1],
+    "Semifinales": [3],
+    "Final": [5],
+  },
+  plata: {
+    "Semifinales": [2],
+    "Final": [4],
+  },
+};
+
+function mostrarPartidos(fase, ronda) {
+  const lineas = lineaMapeo[fase][ronda];
+  const resultados = [];
+
+  if (!lineas || !Array.isArray(lineas)) return;
+
+  for (const linea of lineas) {
+    const datos = datosPorLinea[linea];
+    if (!datos) continue;
+
+    const hora = datos[0];
+
+    const partido1 = datos[1];
+    const resultado1 = datos[4];
+    const partido2 = datos[5];
+    const resultado2 = datos[8];
+    let resultado1F;
+    if (!resultado1){
+      resultado1F= datos[8];
+    }else{
+      resultado1F = resultado1;
+    }
+
+    if (partido1 && resultado1F) {
+      const [local, visitante] = partido1.split(" vs ").map(e => e.trim());
+      resultados.push({
+        hora,
+        campo: "Campo 1",
+        partido: partido1,
+        local,
+        visitante,
+        resultado: resultado1F,
+      });
+    }
+
+    if (partido2 && resultado2) {
+      const [local2, visitante2] = partido2.split(" vs ").map(e => e.trim());
+      resultados.push({
+        hora,
+        campo: "Campo 2",
+        partido: partido2,
+        local: local2,
+        visitante: visitante2,
+        resultado: resultado2,
+      });
+    }
   }
 
-  function cambiarFase() {
-    const faseSeleccionada = document.getElementById('fase').value
-    const menuRondas = document.getElementById('menu-rondas')
-    const rondas = faseSeleccionada === 'oro'
-      ? ['Cuartos de final', 'Semifinales', 'Final']
-      : ['Semifinales', 'Final']
-  
-    menuRondas.innerHTML = '' // Limpiar contenido anterior
-  
-    rondas.forEach(ronda => {
-      const link = document.createElement('button')
-      link.textContent = ronda
-      link.className = 'btn-ronda'
-      link.onclick = () => mostrarPartidos(faseSeleccionada, ronda)
-      menuRondas.appendChild(link)
-    })
-  
-    // // Mostrar directamente la primera ronda
-    // if (rondas.length > 0) mostrarPartidos(faseSeleccionada, rondas[0])
-  }
-cambiarFase()  
-  
-  obtenerResultadosCuartosOro(CSV_URL_RESULTADOS);
+  renderizarTarjetas(resultados);
+}
 
+
+function renderizarTarjetas(resultados) {
+  const contenedor = document.getElementById("contenedor-tarjetas");
+  contenedor.innerHTML = ""; // Limpiar contenido previo
+
+  resultados.forEach((res) => {
+    const tarjeta = document.createElement("div");
+    tarjeta.className = "tarjeta";
+
+    tarjeta.innerHTML = `
+      <div class="equipos">
+        <div class="equipo">
+          <strong>${res.local}</strong>
+          <img src="${escudos[res.local] || "/img/equipos/default.png"}" alt="Escudo ${res.local}">
+        </div>
+        <div class="equipo">
+          <strong>${res.visitante}</strong>
+          <img src="${escudos[res.visitante] || "/img/equipos/default.png"}" alt="Escudo ${res.visitante}">
+        </div>
+      </div>
+      <div class="resultado">${res.resultado}</div>
+      <div class="info-extra">
+        <p>Hora: ${res.hora}</p>
+        <p>${res.campo}</p>
+      </div>
+    `;
+    contenedor.appendChild(tarjeta);
+  });
+}
+
+function cambiarFase() {
+  const faseSeleccionada = document.getElementById("fase").value;
+  const menuRondas = document.getElementById("menu-rondas");
+
+  const rondas = faseSeleccionada === "oro"
+    ? ["Cuartos de final", "Semifinales", "Final"]
+    : ["Semifinales", "Final"];
+
+  menuRondas.innerHTML = "";
+
+  rondas.forEach((ronda) => {
+    const btn = document.createElement("button");
+    btn.className = "btn-ronda";
+    btn.textContent = ronda;
+    btn.onclick = () => mostrarPartidos(faseSeleccionada, ronda);
+    menuRondas.appendChild(btn);
+  });
+
+  // Mostrar por defecto la primera ronda
+  if (rondas.length > 0) mostrarPartidos(faseSeleccionada, rondas[0]);
+}
