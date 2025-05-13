@@ -30,16 +30,11 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    .escudo-clasificacion {
-      height: 16px;
-      width: 16px;
-      object-fit: contain;
-      vertical-align: middle;
-      margin-right: 5px;
-    }
+
     /* Contenedor de cada grupo */
     .grupo-clasificacion {
       margin: 2rem 0;
+      background-color: transparent;
     }
 
     /* Tabla de clasificación */
@@ -49,7 +44,6 @@
       background-color: transparent;
       color: #fff;
       font-family: 'Arial', sans-serif;
-      margin-top: 1rem;
     }
 
     /* Encabezado */
@@ -130,7 +124,7 @@
         <img src="img/equipos/calo.jpeg" id="spinner-img" alt="Cargando...">
         <p>Cargando clasificación...</p>
     </div>
-    <table id="clasificacion" border="2px"></table>
+    <table id="clasificacion" ></table>
   </main>
   <footer>
     <div class="redes">

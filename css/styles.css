@@ -235,15 +235,6 @@ body {
     color: #fafafa;
   }
   
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-family: sans-serif;
-    background-color: #f8f9fa;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
-    overflow-x: auto;
-  }
   
   /* Contenedor con scroll horizontal si se necesita */
   .table-container {
@@ -464,10 +455,7 @@ header {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
   font-family: sans-serif;
-  background-color: #f8f9fa;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
   overflow-x: auto;
 }
 

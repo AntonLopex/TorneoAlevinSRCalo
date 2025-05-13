@@ -62,7 +62,7 @@ function renderizarClasificacion(grupos) {
     const grupoDiv = document.createElement("div");
     grupoDiv.className = "grupo-clasificacion";
 
-    grupoDiv.innerHTML += `<h2>${nombreGrupo}</h2>`;
+    grupoDiv.innerHTML += `<h1>${nombreGrupo}</h1>`;
 
     const tabla = document.createElement("table");
     tabla.className = "tabla-clasificacion";
