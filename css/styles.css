@@ -5,11 +5,11 @@ html, body {
   padding: 0;
   display: flex;
   flex-direction: column;
-  color-scheme: light;
+  color-scheme: only light;
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: only light;
 }
 
 main{
