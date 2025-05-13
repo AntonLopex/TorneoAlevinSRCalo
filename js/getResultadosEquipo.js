@@ -29,7 +29,7 @@ const escudos = {
   "Sp. Portugal": "img/equipos/spacademy.jpg",
   "Victoria C.F.": "img/equipos/victoria.png",
   "G.D. Chaves": "img/equipos/chaves.png",
-  "Atl. Arteixo": "img/equipos/arteixo.jpg",
+  "Atl. Arteixo": "img/equipos/arteixo.png",
 };
 
 function obtenerResultadosDeEquipo(equipoNombre) {
@@ -56,7 +56,7 @@ function obtenerResultadosDeEquipo(equipoNombre) {
               resultados.push({
                 hora,
                 grupo: 1,
-                campo: "Campo 1",
+                campo: " 1",
                 partido: partido1,
                 local,
                 visitante,
@@ -74,7 +74,7 @@ function obtenerResultadosDeEquipo(equipoNombre) {
               resultados.push({
                 hora,
                 grupo: 2,
-                campo: "Campo 2",
+                campo: " 2",
                 partido: partido2,
                 local: local2,
                 visitante: visitante2,

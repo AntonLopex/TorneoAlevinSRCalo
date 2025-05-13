@@ -6,7 +6,31 @@
   <title>Cruces</title>
   <link rel="stylesheet" href="css/styles.css" />
   <script src="js/main.js" defer></script>
+  <script src="js/getEliminatorias.js" defer></script>
 </head>
+<style>
+  #loading {
+  text-align: center;
+  padding: 30px;
+  font-size: 1.5em;
+  color : #333;
+}
+  #spinner-img {
+    margin: 10px auto;
+    border: 5px solid ;
+    border-top: 5px solid ;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: girar 1s linear infinite;
+    color: #fff;
+  }
+
+  @keyframes girar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
 <body>
     <header>
       <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
@@ -27,11 +51,22 @@
       </header>
 
   <main class="contenedor">
-    <h1>Cruces</h1>
-    <p>Aquí aparecerán los cruces del torneo, como eliminatorias y enfrentamientos directos.</p>
+    <div id="loading">
+      <img src="img/equipos/calo.jpeg" id="spinner-img" alt="Cargando...">
+      <p style="color:white">Cargando resultados...</p>
+    </div>
+    <section class="selector-fase">
+      <label for="fase">Selecciona la fase:</label>
+      <select id="fase" onchange="cambiarFase()">
+        <option value="oro">Fase de Oro</option>
+        <option value="plata">Fase de Plata</option>
+      </select>
+    </section>
+    
+    <nav id="menu-rondas" class="menu-rondas"></nav>
+    <div id="contenedor-tarjetas"></div>
   </main>
-
-  <button id="btn-top" title="Volver arriba">↑</button>
+  <!-- <button id="btn-top" title="Volver arriba">↑</button>
   <script>
     const btnTop = document.getElementById('btn-top')
   
@@ -46,7 +81,7 @@
     btnTop.onclick = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
-  </script>
+  </script> -->
   <footer>
     <div class="redes">
       <a href="https://www.instagram.com/futbolcalosr/"><img src="img/instagram.png" alt="Instagram"></a>

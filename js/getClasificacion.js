@@ -14,7 +14,7 @@ const escudos = {
   "SP. Portugal Acad.": "img/equipos/spacademy.jpg",
   "Victoria C.F.": "img/equipos/victoria.png",
   "G.D. Chaves": "img/equipos/chaves.png",
-  "Atl. Arteixo": "img/equipos/arteixo.jpg",
+  "Atl. Arteixo": "img/equipos/arteixo.png",
 };
 
 function obtenerClasificacionCSV(url) {
