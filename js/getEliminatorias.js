@@ -16,6 +16,7 @@ const escudos = {
   "Atl. Arteixo": "img/equipos/arteixo.png",
 };
 
+
 let datosPorLinea = [];
 
 fetch(CSV_URL_RESULTADOS)
@@ -25,6 +26,8 @@ fetch(CSV_URL_RESULTADOS)
     datosPorLinea = lineas.map(linea => linea.split(",").map(c => c.trim()));
     cambiarFase(); // Iniciar con la fase por defecto
     document.getElementById("loading").style.display = "none";
+    document.getElementById("selector").style.display = "block";
+
   })
   .catch(err => {
     document.body.innerHTML += "<p>Error al cargar los datos.</p>";

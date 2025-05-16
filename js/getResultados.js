@@ -36,7 +36,7 @@ function obtenerResultadosPartidos(url) {
   fetch(url)
     .then((res) => res.text())
     .then((csv) => {
-      const lineas = csv.split(/\r?\n/).slice(4); // Omitir encabezados
+      const lineas = csv.split(/\r?\n/).slice(4, 28); // Omitir encabezados
 
       const resultados = [];
 
