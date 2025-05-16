@@ -44,6 +44,9 @@
       background-color: transparent;
       color: #fff;
       font-family: 'Arial', sans-serif;
+      /*  display: none;  Ocultamos por defecto, se muestra cuando se hace click en el botón */
+      overflow-x: auto;
+      white-space: nowrap;
     }
 
     /* Encabezado */
@@ -123,6 +126,8 @@
         <img src="img/equipos/calo.jpeg" id="spinner-img" alt="Cargando...">
         <p style="color:white">Cargando clasificación...</p>
     </div>
+    <button id="mostrarTablaCompleta" style="display:none;">Mostrar tabla completa</button>
+    <button id="volverClasificacionPequena" style="display:none;">Volver a la Clasificación Pequeña</button>
     <table id="clasificacion" ></table>
   </main>
   <footer>
