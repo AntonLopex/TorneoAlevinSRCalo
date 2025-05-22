@@ -132,8 +132,8 @@ function cambiarFase() {
   const menuRondas = document.getElementById("menu-rondas");
 
   const rondas = faseSeleccionada === "oro"
-    ? ["Cuartos de final", "Semifinales", "Final"]
-    : ["Semifinales", "Final"];
+    ? ["Cuartos de final", "Semifinais", "Final"]
+    : ["Semifinais", "Final"];
 
   menuRondas.innerHTML = "";
 
