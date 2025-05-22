@@ -31,6 +31,41 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+ .clasificacionButton{
+  background-color: #005aa7;
+  color: white;
+  border: none;
+  margin-top: 20px;
+  margin-left: 5px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: aparecer 0.3s ease-in-out both;
+}
+
+.clasificacionButton:hover {
+  background-color: #0072ce;
+  transform: scale(1.05);
+}
+
+.clasificacionButton:active {
+  transform: scale(0.97);
+}
+
+/* Animación de entrada para botones */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
 /* Contenedor para la tabla que permite el scroll horizontal */
 .tabla-container {
@@ -99,10 +134,7 @@
   color: #000;
   font-weight: bold;
 }
-
-
-
-  </style>
+</style>
   
 <body>
     <header>
@@ -128,8 +160,8 @@
         <img src="img/equipos/calo.jpeg" id="spinner-img" alt="Cargando...">
         <p style="color:white">Cargando clasificación...</p>
     </div>
-    <button id="mostrarTablaCompleta" style="display:none;">Mostrar tabla completa</button>
-    <button id="volverClasificacionPequena" style="display:none;">Volver a la Clasificación Pequeña</button>
+    <button id="mostrarTablaCompleta" class="clasificacionButton" style="display:none;">Mostrar táboa detallada</button>
+    <button id="volverClasificacionPequena" class="clasificacionButton" style="display:none;">Volver á clasificación simple</button>
     <div id="tabla-contenedor" class="tabla-container">
       <table id="clasificacion"></table>
     </div>

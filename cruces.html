@@ -35,6 +35,18 @@
     100% { transform: rotate(360deg); }
   }
 </style>
+<!-- <script>
+  const select = document.getElementById('fase')
+  const contenedor = document.querySelector('.selector-fase')
+
+  select.addEventListener('focus', () => {
+    contenedor.classList.add('abierto')
+  })
+
+  select.addEventListener('blur', () => {
+    contenedor.classList.remove('abierto')
+  })
+</script> -->
 <body>
     <header>
       <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
@@ -55,38 +67,22 @@
       </header>
 
   <main class="contenedor">
-    <h1>Resultados en las rondas eliminatorias</h1>
+    <h1>Resultados nas eliminatorias</h1>
     <div id="loading">
       <img src="img/equipos/calo.jpeg" id="spinner-img" alt="Cargando...">
       <p style="color:white">Cargando resultados...</p>
     </div>
     <section class="selector-fase" id="selector">
-      <label for="fase">Selecciona la fase:</label>
+      <label for="fase">Selecciona a fase:</label>
       <select id="fase" onchange="cambiarFase()">
-        <option value="oro">Fase de Oro</option>
-        <option value="plata">Fase de Plata</option>
+        <option value="oro">Fase de Ouro</option>
+        <option value="plata">Fase de Prata</option>
       </select>
       <nav id="menu-rondas" class="menu-rondas"></nav>
     </section>
     
     <div id="contenedor-tarjetas"></div>
   </main>
-  <!-- <button id="btn-top" title="Volver arriba">↑</button>
-  <script>
-    const btnTop = document.getElementById('btn-top')
-  
-    window.onscroll = () => {
-      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        btnTop.style.display = 'block'
-      } else {
-        btnTop.style.display = 'none'
-      }
-    }
-  
-    btnTop.onclick = () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-  </script> -->
   <footer>
     <div class="redes">
       <a href="https://www.instagram.com/futbolcalosr/"><img src="img/instagram.png" alt="Instagram"></a>

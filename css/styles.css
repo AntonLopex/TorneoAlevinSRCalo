@@ -739,3 +739,127 @@ h1{
   background-color: #0056b3
 }
 
+/*ESTILOS PARA LOS BOTONES Y EL SELECT*/
+
+/* Contenedor principal de la sección */
+.selector-fase {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 100%;
+}
+.selector-fase.abierto {
+  padding-bottom: 60px; /* Espacio extra mientras el select está abierto */
+}
+/* Etiqueta del select */
+.selector-fase label {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Estilo del select */
+.selector-fase select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  color: #005aa7;
+  border: 2px solid #005aa7;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg width='14' height='10' viewBox='0 0 14 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23005aa7' stroke-width='2' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+/* Hover para el select */
+.selector-fase select:hover {
+  border-color: #0072ce;
+  box-shadow: 0 0 5px rgba(0, 90, 167, 0.4);
+}
+
+/* Estilo del nav con botones (menu-rondas) */
+.menu-rondas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 12px;
+  width: 100%;
+}
+
+/* Estilo de botones dentro del nav */
+.menu-rondas button {
+  background-color: #005aa7;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: aparecer 0.3s ease-in-out both;
+}
+
+.menu-rondas button:hover {
+  background-color: #0072ce;
+  transform: scale(1.05);
+}
+
+.menu-rondas button:active {
+  transform: scale(0.97);
+}
+
+/* Animación de entrada para botones */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Adaptación para móviles */
+@media (max-width: 600px) {
+  .selector-fase {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .selector-fase label,
+  .selector-fase select {
+    width: 100%;
+  }
+
+  .selector-fase select {
+    margin-bottom: 10px;
+  }
+
+  .menu-rondas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-rondas button {
+    width: 90%;
+    max-width: 300px;
+  }
+}
+
