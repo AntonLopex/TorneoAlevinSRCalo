@@ -8,7 +8,7 @@ const escudos = {
   "Santa Mariña": "img/equipos/santamarina.png",
   "Ural C.F.": "img/equipos/ural.jpg",
   "Pabellón Ourense": "img/equipos/pabellon.png",
-  "Racing Ferrol": "img/equipos/ferrol.png",
+  "S.D. Villestro": "img/equipos/villestro.png",
   "Val Miñor": "img/equipos/valminor.jpg",
   "Sp. Portugal": "img/equipos/spacademy.jpg",
   "Victoria C.F.": "img/equipos/victoria.png",
@@ -70,7 +70,7 @@ function mostrarPartidos(fase, ronda) {
       const [local, visitante] = partido1.split(" vs ").map(e => e.trim());
       resultados.push({
         hora,
-        campo: "Campo 1",
+        campo: "1",
         partido: partido1,
         local,
         visitante,
@@ -82,7 +82,7 @@ function mostrarPartidos(fase, ronda) {
       const [local2, visitante2] = partido2.split(" vs ").map(e => e.trim());
       resultados.push({
         hora,
-        campo: "Campo 2",
+        campo: "2",
         partido: partido2,
         local: local2,
         visitante: visitante2,

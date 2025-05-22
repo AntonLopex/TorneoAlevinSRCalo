@@ -24,7 +24,7 @@ const escudos = {
   "Santa Mariña": "img/equipos/santamarina.png",
   "Ural C.F.": "img/equipos/ural.jpg",
   "Pabellón Ourense": "img/equipos/pabellon.png",
-  "Racing Ferrol": "img/equipos/ferrol.png",
+  "S.D. Villestro": "img/equipos/villestro.png",
   "Val Miñor": "img/equipos/valminor.jpg",
   "Sp. Portugal": "img/equipos/spacademy.jpg",
   "Victoria C.F.": "img/equipos/victoria.png",
@@ -86,8 +86,11 @@ function obtenerResultadosPartidos(url) {
         }
       }
 
-      console.log(resultados);
-      renderizarTarjetas(resultados);
+      
+        renderizarTarjetas(resultados)
+      
+      
+      
     })
     .catch((err) => {
       document.body.innerHTML += "<p>Error al cargar los datos.</p>";
