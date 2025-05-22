@@ -73,7 +73,7 @@ function mostrarPartidos(fase, ronda) {
       const [local, visitante] = partido1.split(" vs ").map(e => e.trim());
       resultados.push({
         hora,
-        campo: "1",
+        campo: "Campo 1",
         partido: partido1,
         local,
         visitante,
@@ -85,7 +85,7 @@ function mostrarPartidos(fase, ronda) {
       const [local2, visitante2] = partido2.split(" vs ").map(e => e.trim());
       resultados.push({
         hora,
-        campo: "2",
+        campo: "Campo 2",
         partido: partido2,
         local: local2,
         visitante: visitante2,
