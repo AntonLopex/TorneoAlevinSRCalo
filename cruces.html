@@ -9,12 +9,15 @@
   <script src="js/getEliminatorias.js" defer></script>
 </head>
 <style>
+  #selector{
+    display: none;
+  }
   #loading {
   text-align: center;
   padding: 30px;
   font-size: 1.5em;
   color : #333;
-}
+  }
   #spinner-img {
     margin: 10px auto;
     border: 5px solid ;
@@ -43,27 +46,28 @@
           <ul>
             <li><a href="index.html">Inicio</a></li>
             <li><a href="equipos.html">Equipos</a></li>
-            <li><a href="cruces.html">Cruces</a></li>
-            <li><a href="resultados.html">Resultados</a></li>
             <li><a href="clasificacion.html">Clasificación</a></li>
+            <li><a href="resultados.html">Resultados</a></li>
+            <li><a href="cruces.html">Fase Eliminatoria</a></li>
           </ul>
         </nav>
       </header>
 
   <main class="contenedor">
+    <h1>Resultados en las rondas eliminatorias</h1>
     <div id="loading">
       <img src="img/equipos/calo.jpeg" id="spinner-img" alt="Cargando...">
       <p style="color:white">Cargando resultados...</p>
     </div>
-    <section class="selector-fase">
+    <section class="selector-fase" id="selector">
       <label for="fase">Selecciona la fase:</label>
       <select id="fase" onchange="cambiarFase()">
         <option value="oro">Fase de Oro</option>
         <option value="plata">Fase de Plata</option>
       </select>
+      <nav id="menu-rondas" class="menu-rondas"></nav>
     </section>
     
-    <nav id="menu-rondas" class="menu-rondas"></nav>
     <div id="contenedor-tarjetas"></div>
   </main>
   <!-- <button id="btn-top" title="Volver arriba">↑</button>

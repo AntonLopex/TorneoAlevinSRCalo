@@ -3,20 +3,6 @@ const CSV_URL_RESULTADOS =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTU-cKi7PXQIvUCei0LnpprMcwMBKvjXa955mYqFZygYzYuh08zlKP8JCmSero4jw/pub?gid=597302420&single=true&output=csv";
 
 
-// function obtenerDatosBruto(CSV_URL) {
-//   fetch(CSV_URL)
-//     .then((response) => response.text())
-//     .then((csv) => {
-//       const pre = document.createElement("pre"); // crea un bloque de texto preformateado
-//       pre.textContent = csv;
-//       document.body.appendChild(pre);
-//     })
-//     .catch((err) => {
-//       document.body.innerHTML += "<p>Error al cargar los datos.</p>";
-//       console.error("Error leyendo el CSV:", err);
-//     });
-// }
-
 const escudos = {
   "C.D. Lugo": "img/equipos/lugo.png",
   "S.R. Calo": "img/equipos/calo.jpeg",
@@ -84,7 +70,6 @@ function obtenerResultadosDeEquipo(equipoNombre) {
           }
         }
   
-        console.log(resultados);
         renderizarTarjetas(resultados);
       })
       .catch((err) => {
@@ -141,7 +126,6 @@ function verResultados(nombreEquipo) {
     const nombreEquipo = params.get('equipo');
   
     if (nombreEquipo) {
-        console.log(nombreEquipo);
         obtenerResultadosDeEquipo(nombreEquipo);
     } else {
       document.getElementById('resultados-equipo').textContent = 'No se ha especificado el equipo.';

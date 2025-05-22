@@ -31,71 +31,75 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Contenedor de cada grupo */
-    .grupo-clasificacion {
-      margin: 2rem 0;
-      background-color: transparent;
-    }
+/* Contenedor para la tabla que permite el scroll horizontal */
+.tabla-container {
+  overflow-x: auto; /* Permite el scroll horizontal */
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
 
-    /* Tabla de clasificación */
-    .tabla-clasificacion {
-      width: 100%;
-      border-collapse: collapse;
-      background-color: transparent;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
-    }
+/* Tabla de clasificación */
+.tabla-clasificacion {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: transparent;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  min-width: 300px; /* Ajusta según el contenido para evitar que la tabla se corte */
+}
 
-    /* Encabezado */
-    .tabla-clasificacion thead th {
-      background-color: rgba(0, 51, 160, 0.8);
-      color: white;
-      padding: 10px;
-      font-weight: bold;
-      text-transform: uppercase;
-      text-align: center;
-      border-bottom: 2px solid white;
-    }
+/* Encabezado */
+.tabla-clasificacion thead th {
+  background-color: rgba(0, 51, 160, 0.8);
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 2px solid white;
+}
 
-    /* Celdas */
-    .tabla-clasificacion td {
-      background-color: rgba(255, 255, 255, 0.05);
-      text-align: center;
-      padding: 10px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 14px;
-    }
+/* Celdas */
+.tabla-clasificacion td {
+  background-color: rgba(255, 255, 255, 0.05);
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+}
 
-    /* Hover fila */
-    .tabla-clasificacion tbody tr:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
+/* Hover fila */
+.tabla-clasificacion tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 
-    /* Escudo */
-    .escudo-clasificacion {
-      height: 20px;
-      width: 20px;
-      object-fit: contain;
-      vertical-align: middle;
-      margin-right: 5px;
-    }
+/* Escudo */
+.escudo-clasificacion {
+  height: 20px;
+  width: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 5px;
+}
 
-    /* Puestos destacados */
-    .tabla-clasificacion tbody tr.pos-1,
-    .tabla-clasificacion tbody tr.pos-2,
-    .tabla-clasificacion tbody tr.pos-3,
-    .tabla-clasificacion tbody tr.pos-4  {
-      background: linear-gradient(to right, #FFD700aa, #faec72aa);
-      color: #000;
-      font-weight: bold;
-    }
+/* Puestos destacados */
+.tabla-clasificacion tbody tr.pos-1,
+.tabla-clasificacion tbody tr.pos-2,
+.tabla-clasificacion tbody tr.pos-3,
+.tabla-clasificacion tbody tr.pos-4  {
+  background: linear-gradient(to right, #FFD700aa, #faec72aa);
+  color: #000;
+  font-weight: bold;
+}
 
-    .tabla-clasificacion tbody tr.pos-5,
-    .tabla-clasificacion tbody tr.pos-6 {
-      background: linear-gradient(to right, #C0C0C0aa, #E8E8E8aa);
-      color: #000;
-      font-weight: bold;
-    }
+.tabla-clasificacion tbody tr.pos-5,
+.tabla-clasificacion tbody tr.pos-6 {
+  background: linear-gradient(to right, #C0C0C0aa, #E8E8E8aa);
+  color: #000;
+  font-weight: bold;
+}
+
+
 
   </style>
   
@@ -111,9 +115,9 @@
           <ul>
             <li><a href="index.html">Inicio</a></li>
             <li><a href="equipos.html">Equipos</a></li>
-            <li><a href="cruces.html">Cruces</a></li>
-            <li><a href="resultados.html">Resultados</a></li>
             <li><a href="clasificacion.html">Clasificación</a></li>
+            <li><a href="resultados.html">Resultados</a></li>
+            <li><a href="cruces.html">Fase Eliminatoria</a></li>
           </ul>
         </nav>
       </header>
@@ -123,7 +127,11 @@
         <img src="img/equipos/calo.jpeg" id="spinner-img" alt="Cargando...">
         <p style="color:white">Cargando clasificación...</p>
     </div>
-    <table id="clasificacion" ></table>
+    <button id="mostrarTablaCompleta" style="display:none;">Mostrar tabla completa</button>
+    <button id="volverClasificacionPequena" style="display:none;">Volver a la Clasificación Pequeña</button>
+    <div id="tabla-contenedor" class="tabla-container">
+      <table id="clasificacion"></table>
+    </div>
   </main>
   <footer>
     <div class="redes">

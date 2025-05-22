@@ -3,20 +3,6 @@ const CSV_URL_RESULTADOS =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTU-cKi7PXQIvUCei0LnpprMcwMBKvjXa955mYqFZygYzYuh08zlKP8JCmSero4jw/pub?gid=597302420&single=true&output=csv";
 
 
-// function obtenerDatosBruto(CSV_URL) {
-//   fetch(CSV_URL)
-//     .then((response) => response.text())
-//     .then((csv) => {
-//       const pre = document.createElement("pre"); // crea un bloque de texto preformateado
-//       pre.textContent = csv;
-//       document.body.appendChild(pre);
-//     })
-//     .catch((err) => {
-//       document.body.innerHTML += "<p>Error al cargar los datos.</p>";
-//       console.error("Error leyendo el CSV:", err);
-//     });
-// }
-
 const escudos = {
   "C.D. Lugo": "img/equipos/lugo.png",
   "S.R. Calo": "img/equipos/calo.jpeg",
@@ -36,7 +22,7 @@ function obtenerResultadosPartidos(url) {
   fetch(url)
     .then((res) => res.text())
     .then((csv) => {
-      const lineas = csv.split(/\r?\n/).slice(4); // Omitir encabezados
+      const lineas = csv.split(/\r?\n/).slice(4, 28); // Omitir encabezados
 
       const resultados = [];
 
