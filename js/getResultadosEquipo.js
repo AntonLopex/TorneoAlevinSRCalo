@@ -69,7 +69,7 @@ function obtenerResultadosDeEquipo(equipoNombre) {
             }
           }
         }
-  
+        console.log(resultados);
         renderizarTarjetas(resultados);
       })
       .catch((err) => {
