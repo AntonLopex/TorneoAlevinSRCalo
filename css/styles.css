@@ -604,6 +604,7 @@ tr:hover {
 }
 /*Estilos pagina de inicio*/
 h1{
+  padding: 10px;
   text-align: center;
   color: white;
 }
@@ -675,7 +676,7 @@ h1{
 }
 
 .cardInfo.expanded .card-content {
-  max-height: 2500px;
+  max-height: 3000px;
   padding: 15px; /* margen en todos lados cuando está visible */
 }
 .cardInfo img{
