@@ -37,11 +37,11 @@ fetch(CSV_URL_RESULTADOS)
 const lineaMapeo = {
   oro: {
     "Cuartos de final": [0, 1],
-    "Semifinales": [3],
+    "Semifinais": [3],
     "Final": [5],
   },
   plata: {
-    "Semifinales": [2],
+    "Semifinais": [2],
     "Final": [4],
   },
 };

@@ -18,13 +18,13 @@ main{
 /* Fondo difuminado con imagen fija */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
   color: #fafafa;
   position: relative; /* Necesario para los pseudo-elementos */
   min-height: 100%; /* Asegura que el fondo cubra todo el contenido */
   background: url('../img/instalaciones.jpg') center/cover no-repeat fixed;
   background-size: cover;
   background-attachment: fixed; /* Hace que la imagen de fondo no se mueva al hacer scroll */
+  font-family: "Montserrat", sans-serif;
   html, body {
     height: 100%;
     margin: 0;
@@ -34,7 +34,6 @@ body {
   /* Estilos generales */
   body {
     margin: 0;
-    font-family: Arial, sans-serif;
     color: #0033a0;
   }
   
@@ -306,6 +305,7 @@ body {
   
     table {
       font-size: 13px;
+      font-family: "Montserrat", sans-serif;
     }
   }
   
@@ -422,7 +422,6 @@ header, footer, .equipos-grid, .card, .grupo, .table-container {
 /* Estilos generales */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
   color: #0033a0;
 }
 
@@ -486,7 +485,6 @@ header {
 table {
   width: 100%;
   border-collapse: collapse;
-  font-family: sans-serif;
   overflow-x: auto;
 }
 
@@ -758,6 +756,7 @@ h1{
 }
 /* Etiqueta del select */
 .selector-fase label {
+  font-family: "Montserrat", sans-serif;
   font-size: 20px;
   color: white;
   font-weight: bold;
@@ -774,6 +773,7 @@ h1{
   border-radius: 10px;
   padding: 10px 14px;
   font-size: 16px;
+  font-family: "Montserrat", sans-serif;
   cursor: pointer;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -803,6 +803,7 @@ h1{
 /* Estilo de botones dentro del nav */
 .menu-rondas button {
   background-color: #005aa7;
+  font-family: "Montserrat", sans-serif;
   color: white;
   border: none;
   padding: 10px 18px;
