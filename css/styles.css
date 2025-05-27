@@ -425,6 +425,18 @@ body {
   color: #0033a0;
 }
 
+/* Animación de entrada para el header */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -435,13 +447,16 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  animation: slideDown 0.5s ease-out;
 }
 
+/* Logo */
 .logo {
   font-weight: bold;
   font-size: 1.2rem;
 }
 
+/* Menú de navegación */
 .nav-menu ul {
   display: flex;
   gap: 20px;
@@ -454,8 +469,15 @@ header {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
+.nav-menu a:hover {
+  color: #00a2ff;
+  transform: scale(1.1);
+}
+
+/* Botón menú hamburguesa */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -465,21 +487,37 @@ header {
   background: none;
   border: none;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
+/* Barras del menú */
 .menu-toggle .bar {
   height: 3px;
   width: 100%;
   background-color: white;
   border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
+/* Estado "open" para cambiar a X */
+.menu-toggle.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Texto con fondo */
 .overlay-text {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
 }
-
 
 
 table {
@@ -496,27 +534,42 @@ table {
 }
 
 /* Estilos generales */
-th, td {
-  border: 1px solid #dee2e6;
+.tabla-turnos table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-turnos th, .tabla-turnos td {
+  border: 1px solid #ccc;
   padding: 8px;
   text-align: center;
-  font-size: 14px;
 }
 
-th {
-  background-color: #007bff;
-  color: white;
-  text-transform: uppercase;
-  font-size: 13px;
+/* Estilos de fondo para cada grupo de turno */
+.tabla-turnos tbody tr:nth-child(1),
+.tabla-turnos tbody tr:nth-child(2) {
+  background-color: #e3f2fd; /* Turno 1 - azul claro */
 }
 
-tr:nth-child(even) {
-  background-color: #f1f1f1;
+.tabla-turnos tbody tr:nth-child(3),
+.tabla-turnos tbody tr:nth-child(4) {
+  background-color: #fce4ec; /* Turno 2 - rosa claro */
 }
 
-tr:hover {
-  background-color: #d0e3ff;
+.tabla-turnos tbody tr:nth-child(5),
+.tabla-turnos tbody tr:nth-child(6),
+.tabla-turnos tbody tr:nth-child(7),
+.tabla-turnos tbody tr:nth-child(8) {
+  background-color: #e8f5e9; /* Turno 3 - verde claro */
 }
+
+.tabla-turnos tbody tr:nth-child(9),
+.tabla-turnos tbody tr:nth-child(10),
+.tabla-turnos tbody tr:nth-child(11),
+.tabla-turnos tbody tr:nth-child(12) {
+  background-color: #fff8e1; /* Turno 4 - amarillo claro */
+}
+
 
 /* Responsive para móviles */
 @media (max-width: 600px) {
