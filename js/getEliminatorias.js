@@ -50,7 +50,8 @@ function mostrarPartidos(fase, ronda) {
   const lineas = lineaMapeo[fase][ronda];
   const resultados = [];
 
-  if (!lineas || !Array.isArray(lineas)) return;
+
+   if (!lineas || !Array.isArray(lineas)) return;
 
   for (const linea of lineas) {
     const datos = datosPorLinea[linea];
@@ -95,14 +96,16 @@ function mostrarPartidos(fase, ronda) {
   }
 
   renderizarTarjetas(resultados);
-}
+ }
+
 
 
 function renderizarTarjetas(resultados) {
   const contenedor = document.getElementById("contenedor-tarjetas");
   contenedor.innerHTML = ""; // Limpiar contenido previo
 
-  resultados.forEach((res) => {
+if(resultados.length){
+    resultados.forEach((res) => {
     const tarjeta = document.createElement("div");
     tarjeta.className = "tarjeta";
 
@@ -125,6 +128,7 @@ function renderizarTarjetas(resultados) {
     `;
     contenedor.appendChild(tarjeta);
   });
+}
 }
 
 function cambiarFase() {

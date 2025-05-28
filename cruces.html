@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fase Final</title>
+  <title>Fase Eliminatoria</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="icon" href="img/logo.png" type="image/png">
   <link rel="stylesheet" href="css/styles.css" />
@@ -61,15 +61,15 @@
       <img src="img/equipos/calo.jpeg" id="spinner-img" alt="Cargando...">
       <p style="color:white">Cargando resultados...</p>
     </div>
-    <section class="selector-fase" id="selector">
-      <label for="fase">Selecciona a fase:</label>
-      <select id="fase" onchange="cambiarFase()">
-        <option value="oro">Fase de Ouro</option>
-        <option value="plata">Fase de Prata</option>
-      </select>
-      <nav id="menu-rondas" class="menu-rondas"></nav>
-    </section>
-    
+ <section class="selector-fase" id="selector" style="display: none;">
+  <label for="fase">Selecciona a fase:</label>
+  <select id="fase" onchange="cambiarFase()">
+    <option value="oro">Fase de Ouro</option>
+    <option value="plata">Fase de Prata</option>
+  </select>
+  <nav id="menu-rondas" class="menu-rondas"></nav>
+</section>
+
     <div id="contenedor-tarjetas"></div>
   </main>
   <footer>
