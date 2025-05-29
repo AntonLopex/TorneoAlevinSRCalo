@@ -495,18 +495,6 @@ body {
   }
 }
 
-/* Animación del menú desplegable */
-@keyframes slideDownFade {
-  0% {
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
 /* Header base */
 header {
   display: flex;
@@ -522,7 +510,7 @@ header {
 }
 
 /* Logo */
-header img {
+.logo {
   height: 50px;
 }
 
@@ -536,7 +524,7 @@ header img {
   background-color: #0033a0;
   padding: 15px 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 999;
   opacity: 0;
   transform: translateY(-10px);
@@ -577,11 +565,14 @@ header img {
   background: none;
   border: none;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 60px; /* Igual que la altura del logo */
+  height: 60px;
   padding: 0;
   position: relative;
   z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Iconos dentro del botón */
@@ -594,16 +585,11 @@ header img {
   left: 0;
 }
 
-/* Mostrar solo el icono de menú por defecto */
-.icono-menu {
-  display: block;
-}
-
-.icono-cerrar {
+/* Mostrar solo un icono según estado */
+.menu-toggle .icono-cerrar {
   display: none;
 }
 
-/* Mostrar solo el icono de cerrar cuando el botón está abierto */
 .menu-toggle.open .icono-menu {
   display: none;
 }
@@ -613,7 +599,7 @@ header img {
 }
 
 /* Diseño escritorio */
-@media(min-width: 768px) {
+@media (min-width: 768px) {
   .menu-toggle {
     display: none;
   }
@@ -626,7 +612,7 @@ header img {
     box-shadow: none;
     padding: 0;
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 
   .nav-menu ul {
@@ -634,6 +620,7 @@ header img {
     gap: 20px;
   }
 }
+
 
 
 
