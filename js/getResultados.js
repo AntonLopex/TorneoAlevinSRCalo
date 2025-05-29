@@ -70,13 +70,9 @@ function obtenerResultadosPartidos(url) {
             resultado: resultado2,
           });
         }
-      }
-
-      
+      }      
         renderizarTarjetas(resultados)
-      
-      
-      
+
     })
     .catch((err) => {
       document.body.innerHTML += "<p>Error al cargar los datos.</p>";
