@@ -40,7 +40,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #f9f9f9;
+    background-color: white;
     gap :2rem;
   }
 
@@ -79,6 +79,37 @@
   .info {
     margin: 3px;
   }
+  @media (max-width: 600px) {
+  .resultado-partido {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .equipo-lado,
+  .marcador-central {
+    width: 33.33%; /* Reparto más equilibrado para móviles */
+  }
+
+  .equipo-lado img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .equipo-lado p {
+    font-size: 12px;
+  }
+
+  .resultado {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+
+  .info {
+    font-size: 12px;
+  }
+}
+
 </style>
 <body>
     <header>
