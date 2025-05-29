@@ -55,41 +55,7 @@ body {
     margin-right: 10px;
   }
 
-  
-  .nav-menu ul {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .nav-menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 24px;
-    width: 30px;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .menu-toggle .bar {
-    transition: max-height 0.4s ease, opacity 0.4s ease;
-    overflow: hidden;
-    height: 3px;
-    width: 100%;
-    background-color: white;
-    border-radius: 2px;
-  }
-  
+ 
   
 footer {
   background-color: #0033a0;
@@ -519,10 +485,10 @@ header {
   display: none;
   flex-direction: column;
   position: absolute;
-  top: 70px;
+  top: 100px;
   right: 20px;
   background-color: #0033a0;
-  padding: 15px 20px;
+  padding: 25px 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 999;
@@ -534,6 +500,7 @@ header {
 /* Menú desplegado */
 .nav-menu.open {
   display: flex;
+  margin-top: 10px;
   opacity: 1;
   transform: translateY(0);
 }
@@ -565,8 +532,8 @@ header {
   background: none;
   border: none;
   cursor: pointer;
-  width: 60px; /* Igual que la altura del logo */
-  height: 60px;
+  width: 35px; /* Igual que la altura del logo */
+  height: 35px;
   padding: 0;
   position: relative;
   z-index: 1001;
