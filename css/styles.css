@@ -549,17 +549,43 @@ header {
 }
 
 /* Barras del menú */
+.menu-toggle {
+  width: 30px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .menu-toggle .bar {
   height: 3px;
   width: 100%;
   background-color: white;
   border-radius: 2px;
   transition: all 0.3s ease;
+  position: absolute;
+  left: 0;
+}
+
+/* Barras colocadas por posición */
+.menu-toggle .bar:nth-child(1) {
+  top: 0;
+}
+
+.menu-toggle .bar:nth-child(2) {
+  top: 10px;
+}
+
+.menu-toggle .bar:nth-child(3) {
+  top: 20px;
 }
 
 /* Estado "open" para cambiar a X */
 .menu-toggle.open .bar:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg);
+  top: 10px;
 }
 
 .menu-toggle.open .bar:nth-child(2) {
@@ -567,14 +593,8 @@ header {
 }
 
 .menu-toggle.open .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Texto con fondo */
-.overlay-text {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 10px;
+  transform: rotate(-45deg);
+  top: 10px;
 }
 
 
