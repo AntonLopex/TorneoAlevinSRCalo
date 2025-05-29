@@ -91,31 +91,90 @@ body {
   }
   
   
-  footer {
-    background-color: #0033a0;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
+footer {
+  background-color: #0033a0;
+  color: white;
+  padding: 20px 5%;
+  font-size: 14px;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column; /* móvil por defecto */
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.footer-container .redes {
+  order: -1;
+}
+
+.footer-container .autor {
+  order: 1;
+}
+
+footer .autor a {
+  color: #aad4ff;
+  text-decoration: none;
+}
+
+footer .autor p {
+  text-align: center; /* centrado en móvil */
+}
+
+footer .autor a:hover {
+  text-decoration: underline;
+}
+
+footer .redes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+footer .redes a img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  transition: transform 0.5s;
+}
+
+footer .redes a img:hover {
+  transform: scale(1.5);
+}
+
+.icono-contacto {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin: 0 5px 0 10px;
+}
+
+/* Estilo en ordenador */
+@media(min-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
   }
-  
-  footer .redes {
-    display: flex;
-    justify-content: right;
-    gap: 1rem;
-    margin-top: 10px;
-    margin-right: 5%;
+
+  .autor {
+    max-width: 60%;
   }
-    
-  footer .redes a img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    transition: transform 0.5s;
+
+  .autor p {
+    text-align: right; /* alineación a la derecha en ordenador */
   }
-  
-  footer .redes a img:hover {
-    transform: scale(1.5);
+
+  .redes {
+    justify-content: flex-end;
   }
+}
+
+
   
   @media (max-width: 768px) {
     .menu-toggle {
