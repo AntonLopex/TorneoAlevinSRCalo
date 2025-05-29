@@ -210,7 +210,7 @@ function renderizarTarjetas(resultados, ronda) {
         <div class="resultado-partido">
           <div class="equipo-lado">
             <p>${res.local}</p>
-            <img src="${escudos[res.local] || '/img/equipos/default.png'}" alt="${res.local}">
+            <img src="${escudos[res.local] || '/img/equipos/interrog.png'}" alt="${res.local}">
           </div>
 
           <div class="marcador-central">
@@ -221,7 +221,7 @@ function renderizarTarjetas(resultados, ronda) {
 
           <div class="equipo-lado">
             <p>${res.visitante}</p>
-            <img src="${escudos[res.visitante] || '/img/equipos/default.png'}" alt="${res.visitante}">
+            <img src="${escudos[res.visitante] || '/img/equipos/interrog.png'}" alt="${res.visitante}">
           </div>
         </div>
       `;
