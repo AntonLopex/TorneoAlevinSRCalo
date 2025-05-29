@@ -32,6 +32,48 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+  .resultado-partido {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    flex-wrap: wrap;
+  }
+
+  .equipo-lado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+  }
+
+  .equipo-lado img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain; /* O 'cover' si prefieres que se recorte un poco */
+    margin-bottom: 10px;
+  }
+
+  .equipo-lado p {
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .marcador-central {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+  }
+
+  .hora-campo {
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+  }
+
 </style>
 <body>
     <header>
