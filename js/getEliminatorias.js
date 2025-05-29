@@ -18,7 +18,7 @@ const escudos = {
 
 const enfrentamientosPlaceholder = {
   plata: {
-    "Semifinais": [
+    Semifinais: [
       {
         hora: "18:15",
         campo: "Campo 1",
@@ -34,7 +34,7 @@ const enfrentamientosPlaceholder = {
         resultado: "Por definir",
       },
     ],
-    "Final": [
+    Final: [
       {
         hora: "19:15",
         campo: "Campo 1",
@@ -75,7 +75,7 @@ const enfrentamientosPlaceholder = {
         resultado: "Por definir",
       },
     ],
-    "Semifinais": [
+    Semifinais: [
       {
         hora: "18:45",
         campo: "Campo 1",
@@ -91,7 +91,7 @@ const enfrentamientosPlaceholder = {
         resultado: "Por definir",
       },
     ],
-    "Final": [
+    Final: [
       {
         hora: "19:45",
         campo: "Campo 1",
@@ -103,22 +103,21 @@ const enfrentamientosPlaceholder = {
   },
 };
 
-
-
 let datosPorLinea = [];
 
 fetch(CSV_URL_RESULTADOS)
-  .then(res => res.text())
-  .then(csv => {
+  .then((res) => res.text())
+  .then((csv) => {
     const lineas = csv.split(/\r?\n/).slice(29);
-    datosPorLinea = lineas.map(linea => linea.split(",").map(c => c.trim()));
+    datosPorLinea = lineas.map((linea) =>
+      linea.split(",").map((c) => c.trim())
+    );
     cambiarFase(); // Iniciar con la fase por defecto
     document.getElementById("loading").style.display = "none";
     document.getElementById("selector").style.display = "block";
     console.log("Datos cargados:", datosPorLinea);
-
   })
-  .catch(err => {
+  .catch((err) => {
     document.body.innerHTML += "<p>Error al cargar los datos.</p>";
     console.error("Error leyendo el CSV:", err);
   });
@@ -126,12 +125,12 @@ fetch(CSV_URL_RESULTADOS)
 const lineaMapeo = {
   oro: {
     "Cuartos de final": [0, 1],
-    "Semifinais": [3],
-    "Final": [5],
+    Semifinais: [3],
+    Final: [5],
   },
   plata: {
-    "Semifinais": [2],
-    "Final": [4],
+    Semifinais: [2],
+    Final: [4],
   },
 };
 
@@ -139,8 +138,7 @@ function mostrarPartidos(fase, ronda) {
   const lineas = lineaMapeo[fase][ronda];
   const resultados = [];
 
-
-   if (!lineas || !Array.isArray(lineas)) return;
+  if (!lineas || !Array.isArray(lineas)) return;
 
   for (const linea of lineas) {
     const datos = datosPorLinea[linea];
@@ -153,14 +151,14 @@ function mostrarPartidos(fase, ronda) {
     const partido2 = datos[5];
     const resultado2 = datos[8];
     let resultado1F;
-    if (!resultado1){
-      resultado1F= datos[8];
-    }else{
+    if (!resultado1) {
+      resultado1F = datos[8];
+    } else {
       resultado1F = resultado1;
     }
 
     if (partido1 && resultado1F) {
-      const [local, visitante] = partido1.split(" vs ").map(e => e.trim());
+      const [local, visitante] = partido1.split(" vs ").map((e) => e.trim());
       resultados.push({
         hora,
         campo: "Campo 1",
@@ -172,7 +170,7 @@ function mostrarPartidos(fase, ronda) {
     }
 
     if (partido2 && resultado2) {
-      const [local2, visitante2] = partido2.split(" vs ").map(e => e.trim());
+      const [local2, visitante2] = partido2.split(" vs ").map((e) => e.trim());
       resultados.push({
         hora,
         campo: "Campo 2",
@@ -182,18 +180,14 @@ function mostrarPartidos(fase, ronda) {
         resultado: resultado2,
       });
     }
-
   }
-    console.log("Resultados obtenidos:", resultados);
-    if (resultados.length == 0 && enfrentamientosPlaceholder[fase]?.[ronda]) {
-      renderizarTarjetas(enfrentamientosPlaceholder[fase][ronda], ronda);
-    } else {
-      renderizarTarjetas(resultados, ronda);
-    }
-
- }
-
-
+  console.log("Resultados obtenidos:", resultados);
+  if (resultados.length == 0 && enfrentamientosPlaceholder[fase]?.[ronda]) {
+    renderizarTarjetas(enfrentamientosPlaceholder[fase][ronda], ronda);
+  } else {
+    renderizarTarjetas(resultados, ronda);
+  }
+}
 
 function renderizarTarjetas(resultados, ronda) {
   const contenedor = document.getElementById("contenedor-tarjetas");
@@ -210,7 +204,11 @@ function renderizarTarjetas(resultados, ronda) {
         <div class="resultado-partido">
           <div class="equipo-lado">
             <p>${res.local}</p>
-            <img src="${escudos[res.local] || 'img/equipos/interrog.png'}" alt="${res.local}">
+            <img 
+            src="${escudos[res.local] ? escudos[res.local] : "img/equipos/interrog.png"}" 
+            alt="${res.local}" 
+            onerror="this.src='img/equipos/interrog.png'"
+            >
           </div>
 
           <div class="marcador-central">
@@ -221,7 +219,11 @@ function renderizarTarjetas(resultados, ronda) {
 
           <div class="equipo-lado">
             <p>${res.visitante}</p>
-            <img src="${escudos[res.visitante] || 'img/equipos/interrog.png'}" alt="${res.visitante}">
+            <img 
+            src="${escudos[res.visitante] ? escudos[res.visitante] : 'img/equipos/interrog.png'}" 
+            alt="${res.visitante}" 
+            onerror="this.src='img/equipos/interrog.png'"
+            >
           </div>
         </div>
       `;
@@ -230,14 +232,14 @@ function renderizarTarjetas(resultados, ronda) {
   }
 }
 
-
 function cambiarFase() {
   const faseSeleccionada = document.getElementById("fase").value;
   const menuRondas = document.getElementById("menu-rondas");
 
-  const rondas = faseSeleccionada === "oro"
-    ? ["Cuartos de final", "Semifinais", "Final"]
-    : ["Semifinais", "Final"];
+  const rondas =
+    faseSeleccionada === "oro"
+      ? ["Cuartos de final", "Semifinais", "Final"]
+      : ["Semifinais", "Final"];
 
   menuRondas.innerHTML = "";
 
