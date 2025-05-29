@@ -207,20 +207,22 @@ function renderizarTarjetas(resultados, ronda) {
 
       tarjeta.innerHTML = `
         <div class="nombre-partido"><strong>${nombrePartido}</strong></div>
-        <div class="equipos">
-          <div class="equipo">
-            <strong>${res.local}</strong>
-            <img src="${escudos[res.local] || "/img/equipos/default.png"}" alt="Escudo ${res.local}">
+        <div class="resultado-partido">
+          <div class="equipo-lado">
+            <p>${res.local}</p>
+            <img src="${escudos[res.local] || '/img/equipos/default.png'}" alt="${res.local}">
           </div>
-          <div class="equipo">
-            <strong>${res.visitante}</strong>
-            <img src="${escudos[res.visitante] || "/img/equipos/default.png"}" alt="Escudo ${res.visitante}">
+
+          <div class="marcador-central">
+            <p class="resultado">${res.resultado}</p>
+            <p class="info">Hora: ${res.hora}</p>
+            <p class="info">${res.campo}</p>
           </div>
-        </div>
-        <div class="resultado">${res.resultado}</div>
-        <div class="info-extra">
-          <p>Hora: ${res.hora}</p>
-          <p>${res.campo}</p>
+
+          <div class="equipo-lado">
+            <p>${res.visitante}</p>
+            <img src="${escudos[res.visitante] || '/img/equipos/default.png'}" alt="${res.visitante}">
+          </div>
         </div>
       `;
       contenedor.appendChild(tarjeta);

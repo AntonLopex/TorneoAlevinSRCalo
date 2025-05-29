@@ -371,7 +371,6 @@ body {
   .resultado {
     font-size: 2em;
     font-weight: bold;
-    margin: 10px 0;
     text-align: center;
   }
   
@@ -645,7 +644,6 @@ table {
 .resultado {
   font-size: 1.8em;
   font-weight: bold;
-  margin: 10px 0;
   text-align: center;
 }
 

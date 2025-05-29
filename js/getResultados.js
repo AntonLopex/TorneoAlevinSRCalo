@@ -95,9 +95,9 @@ function renderizarTarjetas(resultados) {
 
         <div class="marcador-central">
           <p class="resultado">${res.resultado}</p>
-          <p>Hora: ${res.hora}</p>
-          <p>Grupo: ${res.grupo}</p>
-          <p>Campo: ${res.campo}</p>
+          <p class="info">Hora: ${res.hora}</p>
+          <p class="info">Grupo: ${res.grupo}</p>
+          <p class="info">Campo: ${res.campo}</p>
         </div>
 
         <div class="equipo-lado">
