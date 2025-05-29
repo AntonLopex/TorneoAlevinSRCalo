@@ -369,7 +369,7 @@ body {
   
   /* Resultado grande y centrado */
   .resultado {
-    font-size: 1.8em;
+    font-size: 2em;
     font-weight: bold;
     margin: 10px 0;
     text-align: center;
