@@ -16,6 +16,94 @@ const escudos = {
   "Atl. Arteixo": "img/equipos/arteixo.png",
 };
 
+const enfrentamientosPlaceholder = {
+  plata: {
+    "Semifinais": [
+      {
+        hora: "18:15",
+        campo: "Campo 1",
+        local: "5º Grupo A",
+        visitante: "6º Grupo B",
+        resultado: "Por determinar",
+      },
+      {
+        hora: "18:15",
+        campo: "Campo 2",
+        local: "5º Grupo A",
+        visitante: "6º Grupo B",
+        resultado: "Por determinar",
+      },
+    ],
+    "Final": [
+      {
+        hora: "19:15",
+        campo: "Campo 1",
+        local: "Ganador Semifinal A",
+        visitante: "Ganador Semifinal B",
+        resultado: "Por determinar",
+      },
+    ],
+  },
+  oro: {
+    "Cuartos de final": [
+      {
+        hora: "17:15",
+        campo: "Campo 1",
+        local: "1º Grupo A",
+        visitante: "4º Grupo B",
+        resultado: "Por determinar",
+      },
+      {
+        hora: "17:15",
+        campo: "Campo 2",
+        local: "1º Grupo B",
+        visitante: "4º Grupo A",
+        resultado: "Por determinar",
+      },
+      {
+        hora: "17:45",
+        campo: "Campo 1",
+        local: "2º Grupo  A",
+        visitante: "3º Grupo B",
+        resultado: "Por determinar",
+      },
+      {
+        hora: "17:45",
+        campo: "Campo 2",
+        local: "2º Grupo B",
+        visitante: "3º Grupo A",
+        resultado: "Por determinar",
+      },
+    ],
+    "Semifinais": [
+      {
+        hora: "18:45",
+        campo: "Campo 1",
+        local: "Ganador Cuartos A",
+        visitante: "Ganador Cuartos D",
+        resultado: "Por determinar",
+      },
+      {
+        hora: "18:45",
+        campo: "Campo 2",
+        local: "Ganador Cuartos B",
+        visitante: "Ganador Cuartos C",
+        resultado: "Por determinar",
+      },
+    ],
+    "Final": [
+      {
+        hora: "19:45",
+        campo: "Campo 1",
+        local: "Ganador Semifinal A",
+        visitante: "Ganador Semifinal B",
+        resultado: "Por determinar",
+      },
+    ],
+  },
+};
+
+
 
 let datosPorLinea = [];
 
@@ -27,6 +115,7 @@ fetch(CSV_URL_RESULTADOS)
     cambiarFase(); // Iniciar con la fase por defecto
     document.getElementById("loading").style.display = "none";
     document.getElementById("selector").style.display = "block";
+    console.log("Datos cargados:", datosPorLinea);
 
   })
   .catch(err => {
@@ -93,43 +182,52 @@ function mostrarPartidos(fase, ronda) {
         resultado: resultado2,
       });
     }
-  }
 
-  renderizarTarjetas(resultados);
+  }
+    console.log("Resultados obtenidos:", resultados);
+    if (resultados.length == 0 && enfrentamientosPlaceholder[fase]?.[ronda]) {
+      renderizarTarjetas(enfrentamientosPlaceholder[fase][ronda], ronda);
+    } else {
+      renderizarTarjetas(resultados, ronda);
+    }
+
  }
 
 
 
-function renderizarTarjetas(resultados) {
+function renderizarTarjetas(resultados, ronda) {
   const contenedor = document.getElementById("contenedor-tarjetas");
   contenedor.innerHTML = ""; // Limpiar contenido previo
 
-if(resultados.length){
-    resultados.forEach((res) => {
-    const tarjeta = document.createElement("div");
-    tarjeta.className = "tarjeta";
+  if (resultados.length) {
+    resultados.forEach((res, index) => {
+      const tarjeta = document.createElement("div");
+      tarjeta.className = "tarjeta";
+      const nombrePartido = obtenerNombrePartido(ronda, index);
 
-    tarjeta.innerHTML = `
-      <div class="equipos">
-        <div class="equipo">
-          <strong>${res.local}</strong>
-          <img src="${escudos[res.local] || "/img/equipos/default.png"}" alt="Escudo ${res.local}">
+      tarjeta.innerHTML = `
+        <div class="nombre-partido"><strong>${nombrePartido}</strong></div>
+        <div class="equipos">
+          <div class="equipo">
+            <strong>${res.local}</strong>
+            <img src="${escudos[res.local] || "/img/equipos/default.png"}" alt="Escudo ${res.local}">
+          </div>
+          <div class="equipo">
+            <strong>${res.visitante}</strong>
+            <img src="${escudos[res.visitante] || "/img/equipos/default.png"}" alt="Escudo ${res.visitante}">
+          </div>
         </div>
-        <div class="equipo">
-          <strong>${res.visitante}</strong>
-          <img src="${escudos[res.visitante] || "/img/equipos/default.png"}" alt="Escudo ${res.visitante}">
+        <div class="resultado">${res.resultado}</div>
+        <div class="info-extra">
+          <p>Hora: ${res.hora}</p>
+          <p>${res.campo}</p>
         </div>
-      </div>
-      <div class="resultado">${res.resultado}</div>
-      <div class="info-extra">
-        <p>Hora: ${res.hora}</p>
-        <p>${res.campo}</p>
-      </div>
-    `;
-    contenedor.appendChild(tarjeta);
-  });
+      `;
+      contenedor.appendChild(tarjeta);
+    });
+  }
 }
-}
+
 
 function cambiarFase() {
   const faseSeleccionada = document.getElementById("fase").value;
@@ -151,4 +249,17 @@ function cambiarFase() {
 
   // Mostrar por defecto la primera ronda
   if (rondas.length > 0) mostrarPartidos(faseSeleccionada, rondas[0]);
+}
+
+function obtenerNombrePartido(fase, index) {
+  if (fase === "Semifinais") {
+    return `Semifinal ${index === 0 ? "A" : "B"}`;
+  }
+  if (fase === "Final") {
+    return "Final";
+  }
+  if (fase === "Cuartos de final") {
+    return `Cuartos ${String.fromCharCode(65 + index)}`; // A, B, C, D
+  }
+  return `Partido ${index + 1}`;
 }
