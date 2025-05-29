@@ -495,6 +495,19 @@ body {
   }
 }
 
+/* Animación del menú desplegable */
+@keyframes slideDownFade {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Header base */
 header {
   display: flex;
   justify-content: space-between;
@@ -509,18 +522,42 @@ header {
 }
 
 /* Logo */
-.logo {
-  font-weight: bold;
-  font-size: 1.2rem;
+header img {
+  height: 50px;
 }
 
 /* Menú de navegación */
-.nav-menu ul {
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background-color: #0033a0;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Menú desplegado */
+.nav-menu.open {
   display: flex;
-  gap: 20px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Lista del menú */
+.nav-menu ul {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .nav-menu a {
@@ -535,67 +572,70 @@ header {
   transform: scale(1.1);
 }
 
-/* Botón menú hamburguesa */
+/* Botón menú hamburguesa con imagen */
 .menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 24px;
-  width: 30px;
   background: none;
   border: none;
   cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-/* Barras del menú */
-.menu-toggle {
-  width: 30px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
   position: relative;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  z-index: 1001;
 }
 
-.menu-toggle .bar {
-  height: 3px;
+/* Iconos dentro del botón */
+.menu-toggle img {
   width: 100%;
-  background-color: white;
-  border-radius: 2px;
-  transition: all 0.3s ease;
+  height: 100%;
+  object-fit: contain;
   position: absolute;
+  top: 0;
   left: 0;
 }
 
-/* Barras colocadas por posición */
-.menu-toggle .bar:nth-child(1) {
-  top: 0;
+/* Mostrar solo el icono de menú por defecto */
+.icono-menu {
+  display: block;
 }
 
-.menu-toggle .bar:nth-child(2) {
-  top: 10px;
+.icono-cerrar {
+  display: none;
 }
 
-.menu-toggle .bar:nth-child(3) {
-  top: 20px;
+/* Mostrar solo el icono de cerrar cuando el botón está abierto */
+.menu-toggle.open .icono-menu {
+  display: none;
 }
 
-/* Estado "open" para cambiar a X */
-.menu-toggle.open .bar:nth-child(1) {
-  transform: rotate(45deg);
-  top: 10px;
+.menu-toggle.open .icono-cerrar {
+  display: block;
 }
 
-.menu-toggle.open .bar:nth-child(2) {
-  opacity: 0;
+/* Diseño escritorio */
+@media(min-width: 768px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .nav-menu {
+    position: static;
+    display: flex !important;
+    flex-direction: row;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-menu ul {
+    flex-direction: row;
+    gap: 20px;
+  }
 }
 
-.menu-toggle.open .bar:nth-child(3) {
-  transform: rotate(-45deg);
-  top: 10px;
-}
+
 
 
 table {

@@ -112,23 +112,25 @@
 
 </style>
 <body>
-    <header>
-      <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
-        <button class="menu-toggle" aria-label="Abrir menú">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
-        <nav class="nav-menu">
-          <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="equipos.html">Equipos</a></li>
-            <li><a href="clasificacion.html">Clasificación</a></li>
-            <li><a href="resultados.html">Resultados</a></li>
-            <li><a href="cruces.html">Fase Eliminatoria</a></li>
-          </ul>
-        </nav>
-      </header>
+<header>
+  <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+
+  <button class="menu-toggle" aria-label="Abrir menú" onclick="this.classList.toggle('open'); document.querySelector('.nav-menu').classList.toggle('open')">
+    <img class="icono-menu" src="img/menu.png" alt="Abrir menú">
+    <img class="icono-cerrar" src="img/cerrar.png" alt="Cerrar menú">
+  </button>
+
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="equipos.html">Equipos</a></li>
+      <li><a href="clasificacion.html">Clasificación</a></li>
+      <li><a href="resultados.html">Resultados</a></li>
+      <li><a href="cruces.html">Fase Eliminatoria</a></li>
+    </ul>
+  </nav>
+</header>
+
 
   <main class="contenedor">
     <h1>Resultados nas eliminatorias</h1>
