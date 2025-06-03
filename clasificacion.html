@@ -32,110 +32,110 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
- .clasificacionButton{
-  background-color: #005aa7;
-  color: white;
-  border: none;
-  margin-top: 20px;
-  margin-left: 5px;
-  padding: 10px 18px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-family: "Montserrat", sans-serif;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  animation: aparecer 0.3s ease-in-out both;
-}
-
-.clasificacionButton:hover {
-  background-color: #0072ce;
-  transform: scale(1.05);
-}
-
-.clasificacionButton:active {
-  transform: scale(0.97);
-}
-
-/* Animación de entrada para botones */
-@keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
+  .clasificacionButton{
+    background-color: #005aa7;
+    color: white;
+    border: none;
+    margin-top: 20px;
+    margin-left: 5px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: aparecer 0.3s ease-in-out both;
   }
-  to {
-    opacity: 1;
-    transform: scale(1);
+
+  .clasificacionButton:hover {
+    background-color: #0072ce;
+    transform: scale(1.05);
   }
-}
 
-/* Contenedor para la tabla que permite el scroll horizontal */
-.tabla-container {
-  overflow-x: auto; /* Permite el scroll horizontal */
-  -webkit-overflow-scrolling: touch;
-  width: 100%;
-}
+  .clasificacionButton:active {
+    transform: scale(0.97);
+  }
 
-/* Tabla de clasificación */
-.tabla-clasificacion {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: transparent;
-  color: #fff;
-  font-family: "Montserrat", sans-serif;
-  min-width: 300px; /* Ajusta según el contenido para evitar que la tabla se corte */
-}
+  /* Animación de entrada para botones */
+  @keyframes aparecer {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 
-/* Encabezado */
-.tabla-clasificacion thead th {
-  background-color: rgba(0, 51, 160, 0.8);
-  color: white;
-  padding: 10px;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-align: center;
-  border-bottom: 2px solid white;
-}
+  /* Contenedor para la tabla que permite el scroll horizontal */
+  .tabla-container {
+    overflow-x: auto; /* Permite el scroll horizontal */
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
 
-/* Celdas */
-.tabla-clasificacion td {
-  background-color: rgba(255, 255, 255, 0.05);
-  text-align: center;
-  padding: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 14px;
-}
+  /* Tabla de clasificación */
+  .tabla-clasificacion {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: transparent;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    min-width: 300px; /* Ajusta según el contenido para evitar que la tabla se corte */
+  }
 
-/* Hover fila */
-.tabla-clasificacion tbody tr:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
+  /* Encabezado */
+  .tabla-clasificacion thead th {
+    background-color: rgba(0, 51, 160, 0.8);
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 2px solid white;
+  }
 
-/* Escudo */
-.escudo-clasificacion {
-  height: 20px;
-  width: 20px;
-  object-fit: contain;
-  vertical-align: middle;
-  margin-right: 5px;
-}
+  /* Celdas */
+  .tabla-clasificacion td {
+    background-color: rgba(255, 255, 255, 0.05);
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+  }
 
-/* Puestos destacados */
-.tabla-clasificacion tbody tr.pos-1,
-.tabla-clasificacion tbody tr.pos-2,
-.tabla-clasificacion tbody tr.pos-3,
-.tabla-clasificacion tbody tr.pos-4  {
-  background: linear-gradient(to right, #FFD700aa, #faec72aa);
-  color: #000;
-  font-weight: bold;
-}
+  /* Hover fila */
+  .tabla-clasificacion tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 
-.tabla-clasificacion tbody tr.pos-5,
-.tabla-clasificacion tbody tr.pos-6 {
-  background: linear-gradient(to right, #C0C0C0aa, #E8E8E8aa);
-  color: #000;
-  font-weight: bold;
-}
+  /* Escudo */
+  .escudo-clasificacion {
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+
+  /* Puestos destacados */
+  .tabla-clasificacion tbody tr.pos-1,
+  .tabla-clasificacion tbody tr.pos-2,
+  .tabla-clasificacion tbody tr.pos-3,
+  .tabla-clasificacion tbody tr.pos-4  {
+    background: linear-gradient(to right, #FFD700aa, #faec72aa);
+    color: #000;
+    font-weight: bold;
+  }
+
+  .tabla-clasificacion tbody tr.pos-5,
+  .tabla-clasificacion tbody tr.pos-6 {
+    background: linear-gradient(to right, #C0C0C0aa, #E8E8E8aa);
+    color: #000;
+    font-weight: bold;
+  }
 </style>
   
 <body>
@@ -168,6 +168,7 @@
     <div id="tabla-contenedor" class="tabla-container">
       <table id="clasificacion"></table>
     </div>
+    <br>
   </main>
 <footer>
   <div class="footer-container">

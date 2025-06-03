@@ -115,7 +115,6 @@ fetch(CSV_URL_RESULTADOS)
     cambiarFase(); // Iniciar con la fase por defecto
     document.getElementById("loading").style.display = "none";
     document.getElementById("selector").style.display = "block";
-    console.log("Datos cargados:", datosPorLinea);
   })
   .catch((err) => {
     document.body.innerHTML += "<p>Error al cargar los datos.</p>";
@@ -151,6 +150,22 @@ function mostrarPartidos(fase, ronda) {
     const partido2 = datos[5];
     const resultado2 = datos[8];
     let resultado1F;
+
+    function procesarResultado(resultado) {
+      if (!resultado) return { resultado: null, resultadoPen: null };
+      const match = resultado.match(/(.*?)\s*pen\((\d+-\d+)\)/i);
+      if (match) {
+        return {
+          resultado: match[1].trim(),
+          resultadoPen: match[2].trim(),
+        };
+      }
+      return {
+        resultado: resultado.trim(),
+        resultadoPen: null,
+      };
+    }
+
     if (!resultado1) {
       resultado1F = datos[8];
     } else {
@@ -158,6 +173,7 @@ function mostrarPartidos(fase, ronda) {
     }
 
     if (partido1 && resultado1F) {
+      const { resultado, resultadoPen } = procesarResultado(resultado1);
       const [local, visitante] = partido1.split(" vs ").map((e) => e.trim());
       resultados.push({
         hora,
@@ -165,11 +181,13 @@ function mostrarPartidos(fase, ronda) {
         partido: partido1,
         local,
         visitante,
-        resultado: resultado1F,
+        resultado: resultado ? resultado : resultado1F,
+        resultadoPen,
       });
     }
 
     if (partido2 && resultado2) {
+      const { resultado, resultadoPen } = procesarResultado(resultado2);
       const [local2, visitante2] = partido2.split(" vs ").map((e) => e.trim());
       resultados.push({
         hora,
@@ -177,11 +195,11 @@ function mostrarPartidos(fase, ronda) {
         partido: partido2,
         local: local2,
         visitante: visitante2,
-        resultado: resultado2,
+        resultado: resultado,
+        resultadoPen,
       });
     }
   }
-  console.log("Resultados obtenidos:", resultados);
   if (resultados.length == 0 && enfrentamientosPlaceholder[fase]?.[ronda]) {
     renderizarTarjetas(enfrentamientosPlaceholder[fase][ronda], ronda);
   } else {
@@ -212,7 +230,10 @@ function renderizarTarjetas(resultados, ronda) {
           </div>
 
           <div class="marcador-central">
-            <p class="resultado">${res.resultado}</p>
+            <p class="resultado">
+              ${res.resultado} 
+              ${res.resultadoPen ? `<br><small> (${res.resultadoPen})</small>` : ""}
+            </p>
             <p class="info">Hora: ${res.hora}</p>
             <p class="info">${res.campo}</p>
           </div>

@@ -867,15 +867,16 @@ h1{
 /* Contenedor principal de la sección */
 .selector-fase {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
+  flex-direction: column; /* Apila label, select y nav en columnas */
+  align-items: center;     /* Centra horizontalmente el contenido */
   justify-content: center;
   padding: 20px;
   border-radius: 12px;
   max-width: 100%;
+  margin: 0 auto; /* Centra la sección en el main */
+  text-align: center;
 }
+
 .selector-fase.abierto {
   padding-bottom: 60px; /* Espacio extra mientras el select está abierto */
 }
