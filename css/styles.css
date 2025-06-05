@@ -824,22 +824,6 @@ h1{
 }
 
 
-/* BOTÓN ENCUESTA */
-.btn {
-  display: inline-block;
-  background-color: #007acc;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 25px;
-  text-decoration: none;
-  margin-top: 10px;
-  transition: background 0.3s;
-}
-
-.btn:hover {
-  background-color: #005aa7;
-}
-
 /*BOTON PARA IR ARRIBA*/
 #btn-top {
   position: fixed;
