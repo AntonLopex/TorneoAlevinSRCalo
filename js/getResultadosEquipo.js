@@ -12,7 +12,7 @@ const escudos = {
   "Pabellón Ourense": "img/equipos/pabellon.png",
   "S.D. Villestro": "img/equipos/villestro.png",
   "Val Miñor": "img/equipos/valminor.jpg",
-  "Sp. Portugal": "img/equipos/spacademy.png",
+  "S.R. Calo B": "img/equipos/calob.png",
   "Victoria C.F.": "img/equipos/victoria.png",
   "G.D. Chaves": "img/equipos/chaves.png",
   "Atl. Arteixo": "img/equipos/arteixo.png",
