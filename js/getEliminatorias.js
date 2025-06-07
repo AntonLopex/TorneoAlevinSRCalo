@@ -173,7 +173,7 @@ function mostrarPartidos(fase, ronda) {
     }
 
     if (partido1 && resultado1F) {
-      const { resultado, resultadoPen } = procesarResultado(resultado1);
+      const { resultado, resultadoPen } = procesarResultado(resultado1F);
       const [local, visitante] = partido1.split(" vs ").map((e) => e.trim());
       resultados.push({
         hora,
@@ -181,7 +181,7 @@ function mostrarPartidos(fase, ronda) {
         partido: partido1,
         local,
         visitante,
-        resultado: resultado ? resultado : resultado1F,
+        resultado: resultado,
         resultadoPen,
       });
     }
